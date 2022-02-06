@@ -7,6 +7,10 @@
   font-family: 'Exo 2', sans-serif;
 }
 
+body {
+  background-color: #cfd8ff;
+}
+
 input {
   outline: none;
 }
@@ -74,7 +78,6 @@ button {
 }
 
 .desc__category {
-  border: 1px solid #6884ff;
   border-radius: 8px;
   width: calc((100% - 50px)/3);
   padding: 5px 5px;
@@ -299,8 +302,13 @@ button {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   border: 1px solid #ffffff;
-  -webkit-box-shadow: 0px 3px 7px -3px #000000;
-          box-shadow: 0px 3px 7px -3px #000000;
+  -webkit-box-shadow: -5px 40px 40px -29px #000000;
+          box-shadow: -5px 40px 40px -29px #000000;
+  display: none;
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  z-index: 1;
 }
 
 .warning__title {
@@ -343,7 +351,7 @@ button {
   background-color: #51aa3f;
 }
 
-.task__form {
+.taskForm {
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -357,8 +365,18 @@ button {
   border-radius: 10px;
   padding: 15px 10px;
   border: 1px solid #ffffff;
-  -webkit-box-shadow: 0px 3px 7px -3px #000000;
-          box-shadow: 0px 3px 7px -3px #000000;
+  -webkit-box-shadow: -5px 40px 40px -29px #000000;
+          box-shadow: -5px 40px 40px -29px #000000;
+  display: none;
+  top: -50vh;
+  left: 20vw;
+  z-index: 1;
+}
+
+.visible {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .inputTitle {
@@ -377,15 +395,15 @@ button {
   font-weight: 600;
 }
 
-.form__title {
+.taskForm__title {
   border: none;
   padding: 5px 5px;
   border-radius: 5px;
   font-size: 14px;
-  margin-bottom: 3px;
+  margin-bottom: 15px;
 }
 
-.form__description {
+.taskForm__description {
   display: block;
   border: none;
   padding: 5px 5px;
@@ -393,13 +411,14 @@ button {
   font-size: 14px;
   margin-bottom: 3px;
   height: 100px;
+  margin-bottom: 10px;
 }
 
-.form__user {
+.taskForm__user {
   width: 100px;
 }
 
-.form__cancel {
+.taskForm__cancel {
   position: absolute;
   bottom: 5px;
   right: 5px;
@@ -408,7 +427,7 @@ button {
   cursor: pointer;
 }
 
-.form__confirm {
+.taskForm__confirm {
   position: absolute;
   bottom: 5px;
   right: 58px;
