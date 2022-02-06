@@ -1,5 +1,369 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800;900&display=swap');
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Exo 2', sans-serif;
+}
+
+input{
+    outline: none;
+}
+
+button{
+    border: none;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1140px;
+    width: 100%;
+}
+
+.trello {
+    background-color: #cfd8ff;
+    padding-top: 20px;
+
+    &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: #a2b3fd;
+    border-radius: 10px;
+    padding: 25px 100px 25px 50px;
+    margin-bottom: 20px;
+    }
+
+    &__title {
+        color: #ffffff;
+        text-transform: uppercase;
+        font-size: 48px;
+        font-weight: 800; 
+    }
+
+    &__timer {
+        border: 1px solid #6884ff;
+        border-radius: 5px;
+        padding: 15px 20px;
+        color: #ffffff;
+        text-transform: uppercase;
+    }
+}
+
+.desc {
+    background-color: #a2b3fd;
+    border-radius: 10px;
+    padding: 15px 30px; 
+    display: flex;
+    justify-content: space-between;
+    align-items:stretch;
+    
+    &__category {
+        border: 1px solid #6884ff;
+        border-radius: 8px;
+        width: calc((100% - 50px)/3); 
+        padding: 5px 5px;
+    }
+}
+
+.todo .topic{
+    background-color: #ffbf0f;
+}
+.todo .task {
+    background-color: #ffbf0f;
+}
+
+.progress .topic{
+    background-color: #366cff67;
+}
+.progress .task {
+    background-color: #366cff67;
+}
+
+.done .topic{
+    background-color: #8ac47b;
+}
+.done .task{
+    background-color: #8ac47b;
+}
+
+.topic {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 30px;
+    background-color: #5b79ffe7;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow:  0px 3px 7px -3px #000000 ;
+
+    &__title {
+    color: #ffffff;
+    text-transform: uppercase;
+    }
+
+    &__count {
+    color: #ffffff;
+    text-transform: uppercase;
+    }
+}
+
+.task {
+    position: relative;
+    // border: 1px solid #6884ff;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    padding: 5px 5px 10px 10px;
+    box-shadow:  0px 3px 7px -3px #000000 ;
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+    
+    &__title {
+        color: #ffffff;
+        text-transform: uppercase;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+
+    &__description {
+        width: 85%;
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 400;
+        margin-bottom: 15px;
+    }
+
+    &__user {
+        color: #ffffff;
+        font-size: 12px;
+        font-weight: 400;
+    }
+
+    &__start {
+        position: absolute;
+        right: 5px;
+        top: 45%;
+        cursor: pointer;
+    }
+    
+    &__data{
+        position: absolute;
+        right: 5px;
+        bottom: 5px;
+        color: #ffffff;
+        font-size: 12px;
+        font-weight: 400;
+
+    }
+}
+
+.button__edit {
+    position: absolute;
+    top: 2px;
+    right: 5px;
+    padding: 1px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button__delete {
+    position: absolute;
+    top: 2px;
+    right: 40px;
+    padding: 1px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button__add {
+    color: #000000;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 5px;
+    margin-top: auto;
+    text-transform: uppercase;
+    box-shadow:  0px 3px 7px -3px #000000 ;
+
+    
+    &:hover{
+        background-color: #ffdd81;
+        cursor: pointer;
+    }
+
+    &:active{
+        background-color: #ff970f;
+    }
+}
+
+.button__back {
+    position: absolute;
+    top: 2px;
+    right: 74px;
+    padding: 1px 4px;
+    border-radius: 5px;
+    &:hover{
+        cursor: pointer;
+    }
+    
+}
+
+.button__complete {
+    position: absolute;
+    top: 2px;
+    right: 5px;
+    padding: 1px 4px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button__deleteAll {
+    color: #000000;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 5px;
+    margin-top: auto;
+    text-transform: uppercase;
+    box-shadow:  0px 3px 7px -3px #000000 ;
+    &:hover{
+        background-color: #ffdd81;
+        cursor: pointer;
+    }
+
+    &:active{
+        background-color: #ff970f;
+    }
+}
+
+.warning {
+    background-color: #8ac47b;
+    width: 200px;
+    border-radius: 5px;
+    padding: 15px 10px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border: 1px solid #ffffff;
+    box-shadow:  0px 3px 7px -3px #000000 ;
+    &__title {
+        width: 100%;
+        text-align: center;
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: 800;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+    &__cancel{
+        background-color: #61805a;
+        padding: 5px 10px;
+        border-radius: 5px;
+        &:hover{
+            background-color: #507c47;
+            cursor: pointer;
+        }
+        &:active{
+            background-color: #51aa3f;
+        }
+        
+    }
+
+    &__confirm {
+        background-color: #61805a;
+        padding: 5px 10px;
+        border-radius: 5px;
+        &:hover{
+            background-color: #507c47;
+            cursor: pointer;
+        }
+        &:active{
+            background-color: #51aa3f;
+        }
+    }
+}
+
+.task__form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #8ac47b;
+    width: 400px;
+    border-radius: 10px;
+    padding: 15px 10px;
+    border: 1px solid #ffffff;
+    box-shadow:  0px 3px 7px -3px #000000 ;
+}
+
+.inputTitle{
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.inputDescription{
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+    color: #ffffff;
+    font-weight: 600;
+
+}
+
+.form__title {
+    border: none;
+    padding: 5px 5px;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 3px;
+    // display: none;
+}
+
+.form__description{
+    display: block;
+    border: none;
+    padding: 5px 5px;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 3px;
+    height: 100px;
+
+}
+
+.form__user {
+    width: 100px;
+}
+
+.form__cancel {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    padding: 1px 4px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form__confirm {
+    position: absolute;
+    bottom: 5px;
+    right: 58px;
+    padding: 1px 4px;
+    border-radius: 5px;
+    cursor: pointer;
 }

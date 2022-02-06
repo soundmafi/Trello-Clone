@@ -5,29 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./img/favicon.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="./css/styles.scss">
+    <link rel="stylesheet" href="./css/styles.css">
     <title>Trello</title>
 </head>
 <body>
     <div class="trello">
         <div class="container">
-            <header class="header">
-                <h1 class="trello__title"></h1>
-                <div class="header__timer">timer</div>
+            <header class="trello__header">
+                <h1 class="trello__title">Trello!</h1>
+                <div class="trello__timer">Time</div>
             </header>
             <section class="desc">
-                <div class="desc__todo">
+                <div class="desc__category todo">
 
                     <div class="topic">
                         <h2 class="topic__title">Todo</h2>
-                        <p class="topic__count"></p>
+                        <p class="topic__count">10</p>
                     </div>
 
                     <div class="task__list">
                         <div class="task">
                             <p class="task__title">Title</p>
-                            <p class="task__description">Do anything today...</p>
+                            <p class="task__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam non qui similique provident aut eaque unde dicta, sed, ipsam soluta iste? Voluptate est iusto repudiandae corporis vero cupiditate molestiae laborum.</p>
                             <div class="task__user">User</div>
+                            <div class="task__data">Time</div>
                             <button class="task__start">Start</button>
                             <button class="button__edit">Edit</button>
                             <button class="button__delete">Delete</button>
@@ -36,6 +37,16 @@
                             <p class="task__title">Title</p>
                             <p class="task__description">Do anything today...</p>
                             <div class="task__user">User</div>
+                            <div class="task__data">Time</div>
+                            <button class="task__start">Start</button>
+                            <button class="button__edit">Edit</button>
+                            <button class="button__delete">Delete</button>
+                        </div>
+                        <div class="task">
+                            <p class="task__title">Title</p>
+                            <p class="task__description">Do anything today...</p>
+                            <div class="task__user">User</div>
+                            <div class="task__data">Time</div>
                             <button class="task__start">Start</button>
                             <button class="button__edit">Edit</button>
                             <button class="button__delete">Delete</button>
@@ -45,18 +56,19 @@
                     <button class="button__add">Add Task</button>
                 </div>
 
-                <div class="desc__progress">
+                <div class="desc__category progress">
 
                     <div class="topic">
                         <h2 class="topic__title">Progress</h2>
-                        <p class="topic__count"></p>
+                        <p class="topic__count">10</p>
                     </div>
 
                     <div class="task__list">
                         <div class="task">
                             <p class="task__title">Title</p>
-                            <p class="task__description">Do anything today...</p>
+                            <p class="task__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ad consequuntur nihil accusamus nam qui aliquid doloribus odit culpa </lore></p>
                             <div class="task__user">User</div>
+                            <div class="task__data">Time</div>
                             <button class="button__back">Back</button>
                             <button class="button__complete">Complete</button>
                         </div>
@@ -64,16 +76,17 @@
                             <p class="task__title">Title</p>
                             <p class="task__description">Do anything today...</p>
                             <div class="task__user">User</div>
+                            <div class="task__data">Time</div>
                             <button class="button__back">Back</button>
                             <button class="button__complete">Complete</button>
                         </div>
                     </div>
                 </div>
 
-                <div class="desc__done">
+                <div class="desc__category done">
                     <div class="topic">
                         <h2 class="topic__title">Done</h2>
-                        <p class="topic__count"></p>
+                        <p class="topic__count">10</p>
                     </div>
 
                     <div class="task__list">
@@ -81,13 +94,15 @@
                             <p class="task__title">Title</p>
                             <p class="task__description">Do anything today...</p>
                             <div class="task__user">User</div>
-                            <button class="button__complete">Complete</button>
+                            <div class="task__data">Time</div>
+                            <button class="button__complete">Delete</button>
                         </div>
                         <div class="task">
                             <p class="task__title">Title</p>
-                            <p class="task__description">Do anything today...</p>
+                            <p class="task__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto vel perferendis eum, est harum, saepe ipsam delectus nostrum asperiores ducimus voluptatem veritatis a non atque amet illum rerum cumque sapiente.</p>
                             <div class="task__user">User</div>
-                            <button class="button__complete">Complete</button>
+                            <div class="task__data">Time</div>
+                            <button class="button__complete">Delete</button>
                         </div>
                     </div>
                     
@@ -98,23 +113,21 @@
             <div class="modal">
                 <div class="warning">
                     <p class="warning__title">Warning</p>
-                    <button class="cancel">Cancel</button>
-                    <button class="confirm">Confirm</button>
+                    <button class="warning__cancel">Cancel</button>
+                    <button class="warning__confirm">Confirm</button>
                 </div>
                 <div class="task__form">
-                    <label for="inputTitle">
-                        <input class="form__title" type="text" name="inputTitle" placeholder="название">
-                    </label>
-                    <label for="inputDescription">
-                        <input class="form__title" type="text" name="inputDescription" placeholder="Описание">
-                    </label>
-                    <button class="cancel">Cancel</button>
-                    <button class="confirm">Confirm</button>
-                    <select class="user__list">
+                    <label class="inputTitle" for="inputTitle">Title</label>                        
+                    <input class="form__title" type="text" id="inputTitle" placeholder="название">
+                    <label class="inputDescription" for="inputDescription" text ="Description">Description</label>
+                    <input class="form__description" type="text" id="inputDescription" placeholder="Описание">
+                    
+                    <button class="form__cancel ">Cancel</button>
+                    <button class="form__confirm">Confirm</button>
+                    <select class="form__user">
                         <option class="user">User 1</option>
                         <option class="user">User 2</option>
                     </select>
-                    
                 </div>
             </div>
         </div>
