@@ -1,3 +1,38 @@
+let taskBase = [{
+    id: 1,
+    category: 'todo',
+    title: 'Делать дела',
+    description:'Создать таск',
+    user: 'Вася',
+    date: '20.01.2000'
+},
+{
+    id: 2,
+    category: 'todo',
+    title: 'Делать дела',
+    description:'Создать таск',
+    user: 'коля',
+    date: '19.05.1654'
+},
+
+{
+    id: 3,
+    category: 'progress',
+    title: 'Делать дела',
+    description:'Создать таск',
+    user: 'Настя',
+    date: '22.25.4567'
+}];
+
+let taskInfo = {
+    id: 1,
+    category: 'todo',
+    title: 'Делать дела',
+    description:'Создать таск',
+    user: 'Вася',
+    date: '20.01.2000'
+};
+
 //button Add Task
 let btnAddTask = document.querySelector('.button__add');
 btnAddTask.addEventListener('click',e =>{
@@ -63,3 +98,48 @@ task.forEach(el =>{
         }
 });
 });
+
+// TaskRender
+function newTaskRender(el,i){
+let groundElement = elementBuilder('div','task');
+groundElement.id =(i+1);
+let taskTitle =  elementBuilder('div','task__title',el.title);
+let taskDescription = elementBuilder('div','task__description',el.description);
+let taskUser = elementBuilder('div','task__user',el.user);
+let taskData = elementBuilder('div','task__data', el.date);
+groundElement.appendChild(taskTitle);
+groundElement.appendChild(taskDescription);
+groundElement.appendChild(taskUser);
+groundElement.appendChild(taskData);
+groundElement.appendChild(elementBuilder('button','task__start','start'));
+groundElement.appendChild(elementBuilder('button','button__edit','edit'));
+groundElement.appendChild(elementBuilder('button','button__delete', 'delete'));
+return groundElement ;
+}
+
+
+// render list of tasks
+function renderList(allTasks){
+    let listTodo = document.querySelector('.todo').querySelector('.task__list');
+    let listProgress = document.querySelector('.progress').querySelector('.task__list');
+    let listDone = document.querySelector('.done').querySelector('.task__list');
+allTasks.forEach((el,i)=>{
+    if (el.category === 'todo'){
+        listTodo.appendChild(newTaskRender(el,i));
+    } else if (el.category ==='progress') { 
+        listProgress.appendChild(newTaskRender(el,i));
+    } else if (el.category ==='done'){
+        listDone.appendChild(newTaskRender(el,i));
+    }
+});
+}
+
+renderList(taskBase);
+
+// render element 
+function elementBuilder(el,clName,textInfo){
+    let element = document.createElement(`${el}`);
+    element.classList.add(`${clName}`);
+    element.textContent = textInfo;
+    return element;
+}
