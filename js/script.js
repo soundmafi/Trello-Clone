@@ -2,13 +2,13 @@ let listTodo = document.querySelector('.todo').querySelector('.task__list');
 let listProgress = document.querySelector('.progress').querySelector('.task__list');
 let listDone = document.querySelector('.done').querySelector('.task__list');
 
-let taskBase = [];
+let taskBase = [];                              //Хранилище
 
 function loaderStart(){
-    getTasks();
-    renderList(taskBase);
+    getTasks();                                 //Получаем список тасков для первой отрисовки
+    renderList(taskBase);                       //Отрисовываем первоначальный списк тасков
 }
-loaderStart();
+loaderStart();      
 
 //button Add Task
 let btnAddTask = document.querySelector('.button__add');
@@ -40,29 +40,6 @@ warning.addEventListener('click', event=>{
     }
 });
 
-//button task -> edit, delete, start, complete, back, 
-let task = document.querySelectorAll('.task');
-task.forEach(el =>{
-    el.addEventListener('click', event =>{
-        let eventTouch = event.target.className;
-        if (eventTouch === 'button__edit'){
-            console.log('редактировать таск');
-        }
-        if (eventTouch === 'button__delete'){
-            console.log('удалить таск');
-        }
-        if (eventTouch === 'task__start'){
-            console.log('начать таск');    
-        }
-        if (eventTouch === 'button__back'){
-            console.log('вернуть такс обратно');
-        }
-        if (eventTouch === 'button__complete'){
-            console.log('завершить таск');    
-        }
-});
-});
-
 // TaskRender Создает элемент и вписывает все данные
 function newTaskRender(el,i){
     let groundElement = elementBuilder('div','task');
@@ -75,15 +52,55 @@ function newTaskRender(el,i){
     groundElement.appendChild(taskDescription);
     groundElement.appendChild(taskUser);
     groundElement.appendChild(taskData);
-    groundElement.appendChild(elementBuilder('button','task__start','start'));
-    groundElement.appendChild(elementBuilder('button','button__edit','edit'));
-    groundElement.appendChild(elementBuilder('button','button__delete', 'delete'));
+    if (el.category === 'todo'){
+        groundElement.appendChild(elementBuilder('button','task__start','start'));
+        groundElement.appendChild(elementBuilder('button','button__edit','edit'));
+        groundElement.appendChild(elementBuilder('button','button__delete', 'delete'));
+    } else if( el.category === 'progress'){
+        groundElement.appendChild(elementBuilder('button','button__back','Back'));
+        groundElement.appendChild(elementBuilder('button','button__complete', 'Complete'));
+    } else if( el.category === 'done'){
+        groundElement.appendChild(elementBuilder('button','button__delete', 'delete'));
+    }
+
+
+    groundElement.addEventListener('click', event =>{
+        let eventTouch = event.target.className;
+        if (eventTouch === 'button__edit'){
+            console.log('редактировать таск');
+        }
+        if (eventTouch === 'button__delete'){
+            taskBase.splice(event.target.parentNode.id - 1, 1);
+            sentTask();
+            clearLists();
+            renderList(taskBase);
+            console.log('удалить таск');
+        }
+        if (eventTouch === 'task__start'){
+            taskBase[event.target.parentNode.id-1].category = 'progress';
+            sentTask();
+            clearLists();
+            renderList(taskBase); 
+        }
+        if (eventTouch === 'button__back'){
+            taskBase[event.target.parentNode.id-1].category = 'todo';
+            sentTask();
+            clearLists();
+            renderList(taskBase);
+        }
+        if (eventTouch === 'button__complete'){
+            taskBase[event.target.parentNode.id-1].category = 'done';
+            sentTask();
+            clearLists();
+            renderList(taskBase);
+            console.log('завершить таск');    
+        }
+    });
     return groundElement ;
     }
 
 // render list of tasks  Создаёт список из тасков. Расставляет в зависимости от категории.
 function renderList(allTasks){
-    
     allTasks.forEach((el,i)=>{
         if (el.category === 'todo'){
             listTodo.appendChild(newTaskRender(el,i));
@@ -121,12 +138,11 @@ taskElement.appendChild(elementBuilder('button','taskForm__cancel','Cancel'));
 taskElement.appendChild(elementBuilder('button','taskForm__confirm','Confirm'));
 taskElement.appendChild(elementBuilder('select','taskForm__user'));
 document.body.appendChild(taskElement);
-// button taskForm -> cancel, confirm and select
+
 taskElement.addEventListener('click', event =>{
     let eventTouch = event.target.className;
-
     if (eventTouch === 'taskForm__cancel'){
-        taskElement.classList.toggle('visible');
+        taskElement.parentNode.removeChild(taskElement);
     }
     if (eventTouch === 'taskForm__confirm'){
         storeTask();
