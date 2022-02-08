@@ -143,3 +143,4 @@ function elementBuilder(el,clName,textInfo){
     element.textContent = textInfo;
     return element;
 }
+
