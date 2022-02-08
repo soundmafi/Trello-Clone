@@ -35,10 +35,11 @@ let taskInfo = {
 
 //button Add Task
 let btnAddTask = document.querySelector('.button__add');
-renderTaskForm();
+
 btnAddTask.addEventListener('click',e =>{
-    let taskform = document.querySelector('.taskForm');
-    taskform.classList.toggle('visible');
+    renderTaskForm();
+    // let taskform = document.querySelector('.taskForm');
+    // taskform.classList.toggle('visible');
 });
 
 //button Delete All
@@ -61,21 +62,6 @@ warning.addEventListener('click', event=>{
     }
 });
 
-// button taskForm -> cancel, confirm and select
-let taskForm = document.querySelector('.taskForm');
-taskForm.addEventListener('click', event =>{
-    let eventTouch = event.target.className;
-    
-    if (eventTouch === 'taskForm__cancel'){
-        taskForm.classList.toggle('visible');
-    }
-    if (eventTouch === 'taskForm__confirm'){
-        console.log('операция подтверждение');
-    }
-    if (eventTouch === 'taskForm__user'){
-        console.log('операция выбора юзера');
-    }
-});
 
 //button task -> edit, delete, start, complete, back, 
 let task = document.querySelectorAll('.task');
@@ -152,6 +138,8 @@ function elementBuilder(el,clName,textInfo){
 
 function renderTaskForm(){
 let taskElement = elementBuilder('div','taskForm');
+
+
 taskElement.classList.add('visible');
 taskElement.appendChild(elementBuilder('label','inputTitle','Title'));
 let inputTitle = elementBuilder('input','taskForm__title');
@@ -167,7 +155,40 @@ taskElement.appendChild(elementBuilder('button','taskForm__cancel','Cancel'));
 taskElement.appendChild(elementBuilder('button','taskForm__confirm','Confirm'));
 taskElement.appendChild(elementBuilder('select','taskForm__user'));
 document.body.appendChild(taskElement);
+// button taskForm -> cancel, confirm and select
+// let taskForm = document.querySelector('.taskForm');
+taskElement.addEventListener('click', event =>{
+    let eventTouch = event.target.className;
+    
+    if (eventTouch === 'taskForm__cancel'){
+        taskElement.classList.toggle('visible');
+    }
+    if (eventTouch === 'taskForm__confirm'){
+        storeTask();
+        taskElement.parentNode.removeChild(taskElement);
+    console.log(taskBase);
+    }
+    if (eventTouch === 'taskForm__user'){
+        console.log('операция выбора юзера');
+    }
+});
+
 return console.log(taskElement); 
 }
 
-
+function storeTask(){
+        
+    let title = document.querySelector('#inputTitle');
+    let description = document.querySelector('#inputDescription');
+    let dateInfo = new Date;                        // Генерируем дату
+    let textDate = `${dateInfo.getDate()} : ${dateInfo.getMonth() + 1} : ${dateInfo.getFullYear()}`;        
+    let newTask = {    
+        id: taskBase.length +1,
+        category: 'todo',
+        title: title.value,
+        description: description.value,
+        user: 'Вася',
+        date: textDate
+    };
+    taskBase.push(newTask);
+}
