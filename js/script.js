@@ -1,12 +1,16 @@
 let listTodo = document.querySelector('.todo').querySelector('.task__list');
 let listProgress = document.querySelector('.progress').querySelector('.task__list');
 let listDone = document.querySelector('.done').querySelector('.task__list');
+let counterTodo = document.querySelector('.todo').querySelector('.topic__count');
+let counterProgress = document.querySelector('.progress').querySelector('.topic__count');
+let counterDone = document.querySelector('.done').querySelector('.topic__count');
 
 let taskBase = [];                              //Хранилище
 
 function loaderStart(){
     getTasks();                                 //Получаем список тасков для первой отрисовки
     renderList(taskBase);                       //Отрисовываем первоначальный списк тасков
+    counterTasks(taskBase);
 }
 loaderStart();      
 
@@ -37,6 +41,7 @@ warning.addEventListener('click', event=>{
         sentTask();
         clearLists();
         warning.classList.toggle('visible');
+        counterTasks(taskBase);
     }
 });
 
@@ -74,25 +79,29 @@ function newTaskRender(el,i){
             sentTask();
             clearLists();
             renderList(taskBase);
+            counterTasks(taskBase);
             console.log('удалить таск');
         }
         if (eventTouch === 'task__start'){
             taskBase[event.target.parentNode.id-1].category = 'progress';
             sentTask();
             clearLists();
-            renderList(taskBase); 
+            renderList(taskBase);
+            counterTasks(taskBase);
         }
         if (eventTouch === 'button__back'){
             taskBase[event.target.parentNode.id-1].category = 'todo';
             sentTask();
             clearLists();
             renderList(taskBase);
+            counterTasks(taskBase);
         }
         if (eventTouch === 'button__complete'){
             taskBase[event.target.parentNode.id-1].category = 'done';
             sentTask();
             clearLists();
             renderList(taskBase);
+            counterTasks(taskBase);
             console.log('завершить таск');    
         }
     });
@@ -172,6 +181,7 @@ function storeTask(){
     sentTask();
     clearLists();
     renderList(taskBase);
+    counterTasks(taskBase);
 }
 
 //Функции отправки и полуения данных из localStorage 
@@ -200,4 +210,22 @@ function clearLists(){
     listTodo.innerHTML = '';
     listProgress.innerHTML = '';
     listDone.innerHTML = '';
+}
+
+function counterTasks(taskBase){
+    let countTodo = 0;
+    let countProgress = 0;
+    let countDone = 0
+taskBase.forEach(el =>{
+    if (el.category === 'todo'){
+        countTodo++;
+    }else if(el.category === 'progress'){
+        countProgress++;
+    }else if(el.category === 'done'){
+        countDone++;
+    }
+});
+counterTodo.innerHTML = countTodo;
+counterProgress.innerHTML = countProgress;
+counterDone.innerHTML = countDone;
 }
