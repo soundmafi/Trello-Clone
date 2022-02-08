@@ -4,12 +4,10 @@ let listDone = document.querySelector('.done').querySelector('.task__list');
 
 let taskBase = [];
 
-
 function loaderStart(){
     getTasks();
     renderList(taskBase);
 }
-
 loaderStart();
 
 //button Add Task
@@ -35,6 +33,10 @@ warning.addEventListener('click', event=>{
     }
     if (eventTouch === 'warning__confirm'){
         console.log('confirm');
+        taskBase = [];
+        sentTask();
+        clearLists();
+        warning.classList.toggle('visible');
     }
 });
 
@@ -152,9 +154,7 @@ function storeTask(){
     };
     taskBase.push(newTask);
     sentTask();
-    listTodo.innerHTML = '';
-    listProgress.innerHTML = '';
-    listDone.innerHTML = '';
+    clearLists();
     renderList(taskBase);
 }
 
@@ -178,4 +178,10 @@ function getTasks() {                         //Получение из localSto
     } else {
         taskBase = [];
     }
+}
+
+function clearLists(){
+    listTodo.innerHTML = '';
+    listProgress.innerHTML = '';
+    listDone.innerHTML = '';
 }
