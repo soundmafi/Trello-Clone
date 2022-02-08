@@ -35,6 +35,7 @@ let taskInfo = {
 
 //button Add Task
 let btnAddTask = document.querySelector('.button__add');
+renderTaskForm();
 btnAddTask.addEventListener('click',e =>{
     let taskform = document.querySelector('.taskForm');
     taskform.classList.toggle('visible');
@@ -101,26 +102,27 @@ task.forEach(el =>{
 
 
 
-// TaskRender
+// TaskRender Создает элемент и вписывает все данные
+
 function newTaskRender(el,i){
-let groundElement = elementBuilder('div','task');
-groundElement.id =(i+1);
-let taskTitle =  elementBuilder('div','task__title',el.title);
-let taskDescription = elementBuilder('div','task__description',el.description);
-let taskUser = elementBuilder('div','task__user',el.user);
-let taskData = elementBuilder('div','task__data', el.date);
-groundElement.appendChild(taskTitle);
-groundElement.appendChild(taskDescription);
-groundElement.appendChild(taskUser);
-groundElement.appendChild(taskData);
-groundElement.appendChild(elementBuilder('button','task__start','start'));
-groundElement.appendChild(elementBuilder('button','button__edit','edit'));
-groundElement.appendChild(elementBuilder('button','button__delete', 'delete'));
-return groundElement ;
-}
+    let groundElement = elementBuilder('div','task');
+    groundElement.id =(i+1);
+    let taskTitle =  elementBuilder('div','task__title',el.title);
+    let taskDescription = elementBuilder('div','task__description',el.description);
+    let taskUser = elementBuilder('div','task__user',el.user);
+    let taskData = elementBuilder('div','task__data', el.date);
+    groundElement.appendChild(taskTitle);
+    groundElement.appendChild(taskDescription);
+    groundElement.appendChild(taskUser);
+    groundElement.appendChild(taskData);
+    groundElement.appendChild(elementBuilder('button','task__start','start'));
+    groundElement.appendChild(elementBuilder('button','button__edit','edit'));
+    groundElement.appendChild(elementBuilder('button','button__delete', 'delete'));
+    return groundElement ;
+    }
 
 
-// render list of tasks
+// render list of tasks  Создаёт список из тасков. Расставляет в зависимости от категории.
 function renderList(allTasks){
     let listTodo = document.querySelector('.todo').querySelector('.task__list');
     let listProgress = document.querySelector('.progress').querySelector('.task__list');
@@ -146,42 +148,26 @@ function elementBuilder(el,clName,textInfo){
     return element;
 }
 
-// render newTask
+// render newTaskForm Отрисовка модального окна с новым таском
 
-function newTaskRender(el,i){
-    let groundElement = elementBuilder('div','task');
-    groundElement.id =(i+1);
-    let taskTitle =  elementBuilder('div','task__title',el.title);
-    let taskDescription = elementBuilder('div','task__description',el.description);
-    let taskUser = elementBuilder('div','task__user',el.user);
-    let taskData = elementBuilder('div','task__data', el.date);
-    groundElement.appendChild(taskTitle);
-    groundElement.appendChild(taskDescription);
-    groundElement.appendChild(taskUser);
-    groundElement.appendChild(taskData);
-    groundElement.appendChild(elementBuilder('button','task__start','start'));
-    groundElement.appendChild(elementBuilder('button','button__edit','edit'));
-    groundElement.appendChild(elementBuilder('button','button__delete', 'delete'));
-    return groundElement ;
-    }
-    
-
-function newTaskCreate(){
-    let newTitle = document.querySelector('#inputTitle');
-    console.log(newTitle);
-
-    newTaskCreate();
+function renderTaskForm(){
+let taskElement = elementBuilder('div','taskForm');
+taskElement.classList.add('visible');
+taskElement.appendChild(elementBuilder('label','inputTitle','Title'));
+let inputTitle = elementBuilder('input','taskForm__title');
+inputTitle.id = 'inputTitle';
+inputTitle.placeholder ='название';
+taskElement.appendChild(inputTitle);
+taskElement.appendChild(elementBuilder('label','inputDescription','Description'));
+let inputDescription = elementBuilder('input','taskForm__description');
+inputDescription.id = 'inputDescription';
+inputDescription.placeholder = "Описание";
+taskElement.appendChild(inputDescription);
+taskElement.appendChild(elementBuilder('button','taskForm__cancel','Cancel'));
+taskElement.appendChild(elementBuilder('button','taskForm__confirm','Confirm'));
+taskElement.appendChild(elementBuilder('select','taskForm__user'));
+document.body.appendChild(taskElement);
+return console.log(taskElement); 
 }
-    // <div class="taskForm">
-    //                 <label class="inputTitle" for="inputTitle">Title</label>                        
-    //                 <input class="taskForm__title" type="text" id="inputTitle" placeholder="название">
-    //                 <label class="inputDescription" for="inputDescription" text ="Description">Description</label>
-    //                 <input class="taskForm__description" type="text" id="inputDescription" placeholder="Описание">
-                    
-    //                 <button class="taskForm__cancel">Cancel</button>
-    //                 <button class="taskForm__confirm">Confirm</button>
-    //                 <select class="taskForm__user">
-    //                     <option class="user">User 1</option>
-    //                     <option class="user">User 2</option>
-    //                 </select>
-    //             </div>
+
+
