@@ -99,6 +99,8 @@ task.forEach(el =>{
 });
 });
 
+
+
 // TaskRender
 function newTaskRender(el,i){
 let groundElement = elementBuilder('div','task');
@@ -144,3 +146,42 @@ function elementBuilder(el,clName,textInfo){
     return element;
 }
 
+// render newTask
+
+function newTaskRender(el,i){
+    let groundElement = elementBuilder('div','task');
+    groundElement.id =(i+1);
+    let taskTitle =  elementBuilder('div','task__title',el.title);
+    let taskDescription = elementBuilder('div','task__description',el.description);
+    let taskUser = elementBuilder('div','task__user',el.user);
+    let taskData = elementBuilder('div','task__data', el.date);
+    groundElement.appendChild(taskTitle);
+    groundElement.appendChild(taskDescription);
+    groundElement.appendChild(taskUser);
+    groundElement.appendChild(taskData);
+    groundElement.appendChild(elementBuilder('button','task__start','start'));
+    groundElement.appendChild(elementBuilder('button','button__edit','edit'));
+    groundElement.appendChild(elementBuilder('button','button__delete', 'delete'));
+    return groundElement ;
+    }
+    
+
+function newTaskCreate(){
+    let newTitle = document.querySelector('#inputTitle');
+    console.log(newTitle);
+
+    newTaskCreate();
+}
+    // <div class="taskForm">
+    //                 <label class="inputTitle" for="inputTitle">Title</label>                        
+    //                 <input class="taskForm__title" type="text" id="inputTitle" placeholder="название">
+    //                 <label class="inputDescription" for="inputDescription" text ="Description">Description</label>
+    //                 <input class="taskForm__description" type="text" id="inputDescription" placeholder="Описание">
+                    
+    //                 <button class="taskForm__cancel">Cancel</button>
+    //                 <button class="taskForm__confirm">Confirm</button>
+    //                 <select class="taskForm__user">
+    //                     <option class="user">User 1</option>
+    //                     <option class="user">User 2</option>
+    //                 </select>
+    //             </div>
