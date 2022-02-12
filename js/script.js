@@ -133,22 +133,25 @@ function elementBuilder(el,clName,textInfo){
 
 // render newTaskForm Отрисовка модального окна с новым таском
 function renderTaskForm(){
-let taskElement = elementBuilder('div','taskForm');
-taskElement.classList.add('visible');
-taskElement.appendChild(elementBuilder('label','inputTitle','Title'));
-let inputTitle = elementBuilder('input','taskForm__title');
-inputTitle.id = 'inputTitle';
-inputTitle.placeholder ='название';
-taskElement.appendChild(inputTitle);
-taskElement.appendChild(elementBuilder('label','inputDescription','Description'));
-let inputDescription = elementBuilder('input','taskForm__description');
-inputDescription.id = 'inputDescription';
-inputDescription.placeholder = "Описание";
-taskElement.appendChild(inputDescription);
-taskElement.appendChild(elementBuilder('button','taskForm__cancel','Cancel'));
-taskElement.appendChild(elementBuilder('button','taskForm__confirm','Confirm'));
-taskElement.appendChild(elementBuilder('select','taskForm__users'));
-document.body.appendChild(taskElement);
+    let taskElement = elementBuilder('div','taskForm');
+    taskElement.classList.add('visible');
+    taskElement.appendChild(elementBuilder('label','inputTitle','Title'));
+    let inputTitle = elementBuilder('input','taskForm__title');
+    inputTitle.id = 'inputTitle';
+    inputTitle.placeholder ='название';
+    taskElement.appendChild(inputTitle);
+    taskElement.appendChild(elementBuilder('label','inputDescription','Description'));
+    let inputDescription = elementBuilder('input','taskForm__description');
+    inputDescription.id = 'inputDescription';
+    inputDescription.placeholder = "Описание";
+    taskElement.appendChild(inputDescription);
+    taskElement.appendChild(elementBuilder('button','taskForm__cancel','Cancel'));
+    taskElement.appendChild(elementBuilder('button','taskForm__confirm','Confirm'));
+    taskElement.appendChild(elementBuilder('select','taskForm__users'));
+    // userBase.forEach(el =>{
+
+    // });
+    document.body.appendChild(taskElement);
 
 taskElement.addEventListener('click', event =>{
     let eventTouch = event.target.className;
@@ -216,38 +219,38 @@ function counterTasks(taskBase){
     let countTodo = 0;
     let countProgress = 0;
     let countDone = 0
-taskBase.forEach(el =>{
-    if (el.category === 'todo'){
-        countTodo++;
-    }else if(el.category === 'progress'){
-        countProgress++;
-    }else if(el.category === 'done'){
-        countDone++;
-    }
-});
-counterTodo.innerHTML = countTodo;
-counterProgress.innerHTML = countProgress;
-counterDone.innerHTML = countDone;
+    taskBase.forEach(el =>{
+        if (el.category === 'todo'){
+            countTodo++;
+        }else if(el.category === 'progress'){
+            countProgress++;
+        }else if(el.category === 'done'){
+            countDone++;
+        }
+    });
+    counterTodo.innerHTML = countTodo;
+    counterProgress.innerHTML = countProgress;
+    counterDone.innerHTML = countDone;
 }
 
 // получение пользователей
-
 async function getUsers(){
     const response = await fetch('https://jsonplaceholder.typicode.com/users/');
     const users = await response.json();
     userBase = users;
     sentUsersStorage(userBase);
+    userBase.forEach(({name}) =>{
+            console.log(name);
+    });
 }
-getUsers();
 
-
-function sentUsersStorage(users) {                        //Отправка в localStorage
+function sentUsersStorage(users) {                        //Отправка users в localStorage
     if (!localStorage.getItem('users')) {
         localStorage.setItem('users', JSON.stringify(users));
     }
 }
 
-function getUsersStorage() {                         //Получение из localStorage
+function getUsersStorage() {                         //Получение user из localStorage или fetch
     if (localStorage.getItem('users')) {
         let requestUsers = JSON.parse(localStorage.getItem('users'));
         userBase = requestUsers;
