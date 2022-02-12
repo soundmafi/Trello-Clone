@@ -368,9 +368,10 @@ button {
   -webkit-box-shadow: -5px 40px 40px -29px #000000;
           box-shadow: -5px 40px 40px -29px #000000;
   display: none;
-  top: -50vh;
-  left: 20vw;
-  z-index: 1;
+  top: 0;
+  left: 50vw;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
 }
 
 .visible {
@@ -414,7 +415,7 @@ button {
   margin-bottom: 10px;
 }
 
-.taskForm__user {
+.taskForm__users {
   width: 100px;
 }
 

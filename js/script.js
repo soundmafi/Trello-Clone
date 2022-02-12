@@ -5,19 +5,21 @@ let counterTodo = document.querySelector('.todo').querySelector('.topic__count')
 let counterProgress = document.querySelector('.progress').querySelector('.topic__count');
 let counterDone = document.querySelector('.done').querySelector('.topic__count');
 
-let taskBase = [];                              //Хранилище
+let taskBase = [];                              //Хранилище хранилище тасков
+let userBase = [];                              //Хранилище пользователей
 
 function loaderStart(){
     getTasks();                                 //Получаем список тасков для первой отрисовки
     renderList(taskBase);                       //Отрисовываем первоначальный списк тасков
     counterTasks(taskBase);
+    getUsersStorage();
 }
 loaderStart();      
 
 //button Add Task
 let btnAddTask = document.querySelector('.button__add');
 btnAddTask.addEventListener('click',e =>{
-    renderTaskForm();                                               //отрисвываем форму для заполнения таска
+    renderTaskForm();                                            //отрисвываем форму для заполнения таска
 });
 
 //button Delete All
@@ -145,7 +147,7 @@ inputDescription.placeholder = "Описание";
 taskElement.appendChild(inputDescription);
 taskElement.appendChild(elementBuilder('button','taskForm__cancel','Cancel'));
 taskElement.appendChild(elementBuilder('button','taskForm__confirm','Confirm'));
-taskElement.appendChild(elementBuilder('select','taskForm__user'));
+taskElement.appendChild(elementBuilder('select','taskForm__users'));
 document.body.appendChild(taskElement);
 
 taskElement.addEventListener('click', event =>{
@@ -157,7 +159,7 @@ taskElement.addEventListener('click', event =>{
         storeTask();
         taskElement.parentNode.removeChild(taskElement);
     }
-    if (eventTouch === 'taskForm__user'){
+    if (eventTouch === 'taskForm__users'){
         console.log('операция выбора юзера');
     }
 });
@@ -187,7 +189,7 @@ function storeTask(){
 //Функции отправки и полуения данных из localStorage 
 function sentTask() {                        //Отправка в localStorage
     if (localStorage.getItem('tasks')) {
-        localStorage.clear();
+        localStorage.removeItem('tasks');
         localStorage.setItem('tasks', JSON.stringify(taskBase));
     } else {
         localStorage.setItem('tasks', JSON.stringify(taskBase));
@@ -198,9 +200,7 @@ function getTasks() {                         //Получение из localSto
     if (localStorage.getItem('tasks')) {
         let request = JSON.parse(localStorage.getItem('tasks'));
         taskBase = [];
-        request.forEach(el => {
-            taskBase.push(el);
-        });
+        taskBase = request;
     } else {
         taskBase = [];
     }
@@ -228,4 +228,30 @@ taskBase.forEach(el =>{
 counterTodo.innerHTML = countTodo;
 counterProgress.innerHTML = countProgress;
 counterDone.innerHTML = countDone;
+}
+
+// получение пользователей
+
+async function getUsers(){
+    const response = await fetch('https://jsonplaceholder.typicode.com/users/');
+    const users = await response.json();
+    userBase = users;
+    sentUsersStorage(userBase);
+}
+getUsers();
+
+
+function sentUsersStorage(users) {                        //Отправка в localStorage
+    if (!localStorage.getItem('users')) {
+        localStorage.setItem('users', JSON.stringify(users));
+    }
+}
+
+function getUsersStorage() {                         //Получение из localStorage
+    if (localStorage.getItem('users')) {
+        let requestUsers = JSON.parse(localStorage.getItem('users'));
+        userBase = requestUsers;
+        }else{
+            getUsers();
+        }
 }

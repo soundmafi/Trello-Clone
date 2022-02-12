@@ -103,12 +103,10 @@ button{
     border-radius: 5px;
     margin-bottom: 10px;
     box-shadow:  0px 3px 7px -3px #000000 ;
-
     &__title {
     color: #ffffff;
     text-transform: uppercase;
     }
-
     &__count {
     color: #ffffff;
     text-transform: uppercase;
@@ -117,7 +115,6 @@ button{
 
 .task {
     position: relative;
-    // border: 1px solid #6884ff;
     border-radius: 8px;
     margin-bottom: 8px;
     padding: 5px 5px 10px 10px;
@@ -165,7 +162,6 @@ button{
         color: #ffffff;
         font-size: 12px;
         font-weight: 400;
-
     }
 }
 
@@ -199,8 +195,6 @@ button{
     margin-top: auto;
     text-transform: uppercase;
     box-shadow:  0px 3px 7px -3px #000000 ;
-
-    
     &:hover{
         background-color: #ffdd81;
         cursor: pointer;
@@ -220,7 +214,6 @@ button{
     &:hover{
         cursor: pointer;
     }
-    
 }
 
 .button__complete {
@@ -248,7 +241,6 @@ button{
         background-color: #ffdd81;
         cursor: pointer;
     }
-
     &:active{
         background-color: #ff970f;
     }
@@ -289,7 +281,6 @@ button{
         &:active{
             background-color: #51aa3f;
         }
-        
     }
 
     &__confirm {
@@ -317,9 +308,9 @@ button{
     border: 1px solid #ffffff;
     box-shadow: -5px 40px 40px -29px #000000;
     display: none;
-    top: -50vh;
-    left: 20vw;
-    z-index: 1;
+    top: 0;
+    left: 50vw;
+    transform: translateX(-50%);
 }
 
 .visible {
@@ -361,7 +352,7 @@ button{
     margin-bottom: 10px;
 }
 
-.taskForm__user {
+.taskForm__users {
     width: 100px;
 }
 
