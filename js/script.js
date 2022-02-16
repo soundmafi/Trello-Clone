@@ -148,9 +148,10 @@ function renderTaskForm(){
     taskElement.appendChild(elementBuilder('button','taskForm__cancel','Cancel'));
     taskElement.appendChild(elementBuilder('button','taskForm__confirm','Confirm'));
     taskElement.appendChild(elementBuilder('select','taskForm__users'));
-    // userBase.forEach(el =>{
-
-    // });
+    let select = taskElement.querySelector('.taskForm__users');
+    console.log(select);
+    renderUser(select);    
+    console.log(userBase);
     document.body.appendChild(taskElement);
 
 taskElement.addEventListener('click', event =>{
@@ -240,8 +241,9 @@ async function getUsers(){
     userBase = users;
     sentUsersStorage(userBase);
     userBase.forEach(({name}) =>{
-            console.log(name);
-    });
+        console.log(name);
+});
+    return userBase;
 }
 
 function sentUsersStorage(users) {                        //Отправка users в localStorage
@@ -257,4 +259,12 @@ function getUsersStorage() {                         //Получение user �
         }else{
             getUsers();
         }
+}
+
+function renderUser(listPoint){        
+    userBase.forEach(({name})=> {
+       let user = elementBuilder('option','taskForm__user');
+       user.innerText =`${name}`;
+       listPoint.appendChild(user);
+    });
 }
