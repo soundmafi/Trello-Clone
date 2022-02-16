@@ -164,7 +164,7 @@ taskElement.addEventListener('click', event =>{
         taskElement.parentNode.removeChild(taskElement);
     }
     if (eventTouch === 'taskForm__users'){
-        console.log('операция выбора юзера');
+        console.log(event.target[selected]);
     }
 });
 return;
@@ -174,13 +174,19 @@ function storeTask(){
     let title = document.querySelector('#inputTitle');
     let description = document.querySelector('#inputDescription');
     let dateInfo = new Date;                        // Генерируем дату
-    let textDate = `${dateInfo.getDate()} : ${dateInfo.getMonth() + 1} : ${dateInfo.getFullYear()}`;        
+    let textDate = `${dateInfo.getDate()} : ${dateInfo.getMonth() + 1} : ${dateInfo.getFullYear()}`; 
+    
+    let users = document.querySelector('.taskForm__users');
+    let user = users.querySelector(`option[value ='${users.value}']`).value;
+
+
+      
     let newTask = {    
         id: taskBase.length +1,
         category: 'todo',
         title: title.value,
         description: description.value,
-        user: 'Вася',
+        user: user,
         date: textDate
     };
     taskBase.push(newTask);
@@ -240,9 +246,9 @@ async function getUsers(){
     const users = await response.json();
     userBase = users;
     sentUsersStorage(userBase);
-    userBase.forEach(({name}) =>{
-        console.log(name);
-});
+//     userBase.forEach(({name}) =>{
+//         console.log(name);
+// });
     return userBase;
 }
 
@@ -264,6 +270,7 @@ function getUsersStorage() {                         //Получение user �
 function renderUser(listPoint){        
     userBase.forEach(({name})=> {
        let user = elementBuilder('option','taskForm__user');
+       user.value = name;
        user.innerText =`${name}`;
        listPoint.appendChild(user);
     });
