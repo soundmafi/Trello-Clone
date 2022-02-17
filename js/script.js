@@ -1,3 +1,5 @@
+import {elementBuilder} from './renders.js';
+
 let listTodo = document.querySelector('.todo').querySelector('.task__list');            // Список колонки Todo
 let listProgress = document.querySelector('.progress').querySelector('.task__list');    // Список колонки Progress
 let listDone = document.querySelector('.done').querySelector('.task__list');            // Список коллонки Done
@@ -111,14 +113,6 @@ function renderList(allTasks){
             listDone.appendChild(taskRender(el,i));
         }
     });
-}
-
-// elementBuilder Создаёт элемент на основе принимающих аргументов 
-function elementBuilder(el,clName,textInfo){
-    let element = document.createElement(`${el}`);
-    element.classList.add(`${clName}`);
-    element.textContent = textInfo;
-    return element;
 }
 
 // render newTaskForm Отрисовка модального окна для создания нового таска
