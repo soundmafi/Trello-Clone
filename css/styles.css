@@ -57,9 +57,14 @@ button {
 .trello__timer {
   border: 1px solid #6884ff;
   border-radius: 5px;
-  padding: 15px 20px;
+  padding: 5px 20px;
   color: #ffffff;
   text-transform: uppercase;
+  font-size: 36px;
+  font-weight: 600;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .desc {
