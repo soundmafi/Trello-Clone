@@ -39,9 +39,7 @@ warning.addEventListener('click', event =>{
     }
     if (eventTouch === 'warning__confirm'){                      // По клику на кнопку Confirm:
         taskBase = [];                                           //     - очищаем список тасков в хранилище
-        sentTask();                                              //     - отправляем данные о тасках в localStorage
-        clearLists();                                            //     - очищаем списоки тасков в DOM в каждой колонке
-        counterTasks(taskBase);                                  //     - пересчитываем таски
+        rebuild();
         warning.classList.toggle('visible');                     //     - Скрываем попап warning
     }
 });
@@ -77,31 +75,19 @@ function taskRender(el,i){
         }
         if (eventTouch === 'button__delete'){
             taskBase.splice(event.target.parentNode.id - 1, 1);
-            sentTask();
-            clearLists();
-            renderList(taskBase);
-            counterTasks(taskBase);
+           rebuild();
         }
         if (eventTouch === 'task__start'){
             taskBase[event.target.parentNode.id-1].category = 'progress';
-            sentTask();
-            clearLists();
-            renderList(taskBase);
-            counterTasks(taskBase);
+            rebuild();
         }
         if (eventTouch === 'button__back'){
             taskBase[event.target.parentNode.id-1].category = 'todo';
-            sentTask();
-            clearLists();
-            renderList(taskBase);
-            counterTasks(taskBase);
+            rebuild();
         }
         if (eventTouch === 'button__complete'){
             taskBase[event.target.parentNode.id-1].category = 'done';
-            sentTask();
-            clearLists();
-            renderList(taskBase);
-            counterTasks(taskBase);  
+            rebuild();  
         }
     });
     return groundElement ;
@@ -179,10 +165,7 @@ function storeTask(){
         date: textDate                                  // дата
     };
     taskBase.push(newTask);                             // записываем в хранилище сформарованный новый таск    
-    sentTask();                                         // обновлем данный в localStorage
-    clearLists();                                       // очищвем списки в колонках
-    renderList(taskBase);                               // заново отрисовываем таски с обновленной информацией
-    counterTasks(taskBase);                             // пересчитываем таски
+    rebuild();
 }
 
 //Отправка тасков в localStorage
@@ -197,12 +180,10 @@ function sentTask() {
 
 //Получение тасков из localStorage
 function getTasks() {                                               
-    if (localStorage.getItem('tasks')) {                          // если в lS что-то есть, то
-        let request = JSON.parse(localStorage.getItem('tasks'));  // получаем данные из LS
-        taskBase = [];                                            // очищаем  и перезаписываем хранилище тасков
-        taskBase = request;
-    } else {                                                      // если ничего нет, то
-        taskBase = [];                                            // хранилище пустое
+    if (localStorage.getItem('tasks')) {                          
+        taskBase = JSON.parse(localStorage.getItem('tasks'));
+    } else {                                                      
+        taskBase = [];                                       
     }
 }
 
@@ -233,10 +214,8 @@ function counterTasks(taskBase){
 }
 
 // получение пользователей с сервера
-async function getUsers(){
-    const response = await fetch('https://jsonplaceholder.typicode.com/users/');
-    const users = await response.json();
-    userBase = users;
+async function getUsers(){ 
+    userBase = await fetch('https://jsonplaceholder.typicode.com/users/').then(response => response.json());
     sentUsersStorage(userBase);
     return userBase;
 }
@@ -251,8 +230,7 @@ function sentUsersStorage(users) {
 //Получение user из localStorage или fetch
 function getUsersStorage() {                         
     if (localStorage.getItem('users')) {
-        let requestUsers = JSON.parse(localStorage.getItem('users'));
-        userBase = requestUsers;
+        userBase = JSON.parse(localStorage.getItem('users'));
         }else{
             getUsers();
         }
@@ -266,4 +244,12 @@ function renderUser(listPoint){
        user.innerText =`${name}`;
        listPoint.appendChild(user);
     });
+}
+
+// функция "перестроения" после изменений
+function rebuild(){
+    sentTask();
+    clearLists();
+    counterTasks(taskBase);
+    renderList(taskBase);
 }
