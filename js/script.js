@@ -15,14 +15,21 @@ function loaderStart(){
     renderList(taskBase);                       //Отрисовываем первоначальный списковтасков
     counterTasks(taskBase);                     //Считаем количество тасков в каждой колонке 
     getUsersStorage();                          //Получаем список пользователей из LocalStorage
+    renderTaskForm();                           //Отрисовываем форму для новых тасков
 }
 
 loaderStart();
 
+let taskForm = document.querySelector('.taskForm');
+
 // Button Add Task
 let btnAddTask = document.querySelector('.button__add');
 btnAddTask.addEventListener('click',e =>{
-    renderTaskForm();                                            // По клику на кнопку отрисвываем форму для заполнения таска
+    taskForm.classList.toggle('visible'); 
+    let title = document.querySelector('#inputTitle');                          // инпут с заголовком
+    let description = document.querySelector('#inputDescription');              // инпут с описанием таска
+    title.value = '';                                                           // очистка заголовка
+    description.value = '';                                                     // очистка описания
 });
 
 // Button Delete All
@@ -117,7 +124,7 @@ function elementBuilder(el,clName,textInfo){
 // render newTaskForm Отрисовка модального окна для создания нового таска
 function renderTaskForm(){
     let taskElement = elementBuilder('div','taskForm');
-    taskElement.classList.add('visible');
+    // taskElement.classList.add('visible');
     taskElement.appendChild(elementBuilder('label','inputTitle','Title'));
     let inputTitle = elementBuilder('input','taskForm__title');
     inputTitle.id = 'inputTitle';
@@ -133,19 +140,19 @@ function renderTaskForm(){
     taskElement.appendChild(elementBuilder('select','taskForm__users'));
     let select = taskElement.querySelector('.taskForm__users');          // находим в модальном окне точку для отрисовки в ней списка юзеров
     renderUser(select);                                                  // отрисовываем options с юземрами в select 
-    document.body.appendChild(taskElement);
+    document.body.prepend(taskElement);
     // добавляем на кнопки прослушку
     taskElement.addEventListener('click', event =>{
         let eventTouch = event.target.className;
         if (eventTouch === 'taskForm__cancel'){                         // по клику на cancel удаляем модальное окно
-            taskElement.parentNode.removeChild(taskElement);
+            taskForm.classList.toggle('visible');
         }
         if (eventTouch === 'taskForm__confirm'){                        // по клику на confirm записываем новый таск и удаляем модальное окно 
             storeTask();
-            taskElement.parentNode.removeChild(taskElement);
+            taskForm.classList.toggle('visible');
         }
     });
-    return;
+    return taskElement;
 }
 
 // storeTask Фукнция сбора информации и записи его в хранилище
