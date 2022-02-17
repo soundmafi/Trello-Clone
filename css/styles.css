@@ -352,7 +352,7 @@ button {
 }
 
 .taskForm {
-  position: relative;
+  position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -368,10 +368,11 @@ button {
   -webkit-box-shadow: -5px 40px 40px -29px #000000;
           box-shadow: -5px 40px 40px -29px #000000;
   display: none;
-  top: 0;
+  top: 20vh;
   left: 50vw;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+  z-index: 1;
 }
 
 .visible {

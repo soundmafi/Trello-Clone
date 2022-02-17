@@ -146,7 +146,7 @@ function renderTaskForm(){
             taskForm.classList.toggle('visible');
         }
     });
-    return taskElement;
+    return;
 }
 
 // storeTask Фукнция сбора информации и записи его в хранилище
