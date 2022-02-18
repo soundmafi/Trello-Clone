@@ -299,9 +299,8 @@ button{
     }
 }
 
-.taskForm {
+.taskForm, .taskEdit {
     position: absolute;
-    display: flex;
     flex-direction: column;
     background-color: #8ac47b;
     width: 400px;

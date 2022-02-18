@@ -7,6 +7,7 @@ let counterTodo = document.querySelector('.todo').querySelector('.topic__count')
 let counterProgress = document.querySelector('.progress').querySelector('.topic__count');// Точка для счётчика тасков в Progress
 let counterDone = document.querySelector('.done').querySelector('.topic__count');       // Точка для счётчика тасков в Done
 let warning = document.querySelector('.warning');                                       // Попап предупреждения Warning
+let edit = document.querySelector('.container');
 
 let taskBase = [];                              //Хранилище хранилище тасков
 let userBase = [];                              //Хранилище пользователей
@@ -81,6 +82,8 @@ function taskRender(el,i){
         let eventTouch = event.target.className;
         if (eventTouch === 'button__edit'){
             console.log('редактировать таск');
+            let editedElement = taskBase[event.target.parentNode.id - 1];
+            editTask(editedElement);
         }
         if (eventTouch === 'button__delete'){
             taskBase.splice(event.target.parentNode.id - 1, 1);
@@ -118,7 +121,6 @@ function renderList(allTasks){
 // render newTaskForm Отрисовка модального окна для создания нового таска
 function renderTaskForm(){
     let taskElement = elementBuilder('div','taskForm');
-    // taskElement.classList.add('visible');
     taskElement.appendChild(elementBuilder('label','inputTitle','Title'));
     let inputTitle = elementBuilder('input','taskForm__title');
     inputTitle.id = 'inputTitle';
@@ -258,11 +260,49 @@ function rebuild(){
 
 window.onload = function() {
     setInterval(function() {
-      let seconds = new Date().getSeconds();
-      document.getElementById("seconds").innerHTML = (seconds < 10 ? '0' : '') + seconds;
       let minutes = new Date().getMinutes();
       document.getElementById("minutes").innerHTML = (minutes < 10 ? '0' : '') + minutes;
       let hours = new Date().getHours();
       document.getElementById("hours").innerHTML = (hours < 10 ? '0' : '') + hours;
     }, 1000);
   }
+
+
+
+  function editTask(element){
+    let taskEdit = elementBuilder('div','taskEdit');
+    taskEdit.classList.add('visible');
+    taskEdit.appendChild(elementBuilder('label','inputTitle','Title'));
+    let inputTitle = elementBuilder('input','taskForm__title');
+    inputTitle.id = 'inputTitle';
+    inputTitle.value = element.title;
+    taskEdit.appendChild(inputTitle);
+    taskEdit.appendChild(elementBuilder('label','inputDescription','Description'));
+    let inputDescription = elementBuilder('input','taskForm__description');
+    inputDescription.id = 'inputDescription';
+    inputDescription.value = element.description;
+    taskEdit.appendChild(inputDescription);
+    taskEdit.appendChild(elementBuilder('button','taskForm__cancel','Cancel'));
+    taskEdit.appendChild(elementBuilder('button','taskForm__confirm','Confirm'));
+    taskEdit.appendChild(elementBuilder('select','taskForm__users'));
+    let select = taskEdit.querySelector('.taskForm__users');          
+    renderUser(select);                                                   
+    edit.appendChild(taskEdit);
+    // добавляем на кнопки прослушку
+    taskEdit.addEventListener('click', event =>{
+        let eventTouch = event.target.className;
+        if (eventTouch === 'taskForm__cancel'){                         // по клику на cancel удаляем модальное окно
+            taskEdit.parentNode.removeChild(taskEdit);
+        }
+        if (eventTouch === 'taskForm__confirm'){                        // по клику на confirm записываем новый таск и удаляем модальное окно
+            let title = taskEdit.querySelector('#inputTitle');                          // инпут с заголовком
+            let description = taskEdit.querySelector('#inputDescription');              // инпут с описанием таска
+            taskBase[element.id-1].title = title.value;
+            taskBase[element.id-1].description = description.value;
+            rebuild();
+            taskEdit.parentNode.removeChild(taskEdit);
+        }
+    });
+    return;
+}
+
