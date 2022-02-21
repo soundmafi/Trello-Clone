@@ -15,23 +15,23 @@ let userBase = [];                              //Хранилище польз�
 // Функция для получения данных и отрисовки элементов приложения при открытии приложения в браузере
 function loaderStart(){
     getTasks();                                 //Получаем список тасков для первой отрисовки из LocalStorage
+    getUsersStorage();
     renderList(taskBase);                       //Отрисовываем первоначальный списковтасков
-    counterTasks(taskBase);                     //Считаем количество тасков в каждой колонке 
-    getUsersStorage();                          //Получаем список пользователей из LocalStorage
-    renderTaskForm();                           //Отрисовываем форму для новых тасков
+    counterTasks(taskBase);                     //Считаем количество тасков в каждой колонке                               //Получаем список пользователей из LocalStorage
+    // renderTaskForm();                           //Отрисовываем форму для новых тасков
 }
 
 loaderStart();
 
-let taskForm = document.querySelector('.taskForm');
-
 // Button Add Task
 let btnAddTask = document.querySelector('.button__add');
 btnAddTask.addEventListener('click',e =>{
+    renderTaskForm();
+    let taskForm = document.querySelector('.taskForm');
     taskForm.classList.toggle('visible'); 
     let title = document.querySelector('#inputTitle');                          // инпут с заголовком
     let description = document.querySelector('#inputDescription');              // инпут с описанием таска
-    title.value = '';                                                           // очистка заголовка
+    title.value = '';                                                            // очистка заголовка
     description.value = '';                                                     // очистка описания
 });
 
@@ -77,6 +77,7 @@ function taskRender(el,i){
     } else if( el.category === 'done'){
         groundElement.appendChild(elementBuilder('button','button__delete', 'delete'));
     }
+    
     // Добавляем прослушку на кнопки
     groundElement.addEventListener('click', event =>{
         let eventTouch = event.target.className;
@@ -119,7 +120,7 @@ function renderList(allTasks){
 }
 
 // render newTaskForm Отрисовка модального окна для создания нового таска
-function renderTaskForm(){
+    function renderTaskForm(){
     let taskElement = elementBuilder('div','taskForm');
     taskElement.appendChild(elementBuilder('label','inputTitle','Title'));
     let inputTitle = elementBuilder('input','taskForm__title');
@@ -148,7 +149,9 @@ function renderTaskForm(){
             taskForm.classList.toggle('visible');
         }
     });
-    return;
+
+    let taskForm = document.querySelector('.taskForm');
+    return taskForm, console.log(taskForm);
 }
 
 // storeTask Фукнция сбора информации и записи его в хранилище
@@ -257,7 +260,6 @@ function rebuild(){
     renderList(taskBase);
 }
 
-
 window.onload = function() {
     setInterval(function() {
       let minutes = new Date().getMinutes();
@@ -267,9 +269,7 @@ window.onload = function() {
     }, 1000);
   }
 
-
-
-  function editTask(element){
+function editTask(element){
     let taskEdit = elementBuilder('div','taskEdit');
     taskEdit.classList.add('visible');
     taskEdit.appendChild(elementBuilder('label','inputTitle','Title'));
@@ -305,4 +305,3 @@ window.onload = function() {
     });
     return;
 }
-
