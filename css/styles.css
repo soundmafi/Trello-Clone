@@ -294,7 +294,7 @@ button {
   background-color: #ff970f;
 }
 
-.warning {
+.warning, .overload {
   background-color: #8ac47b;
   width: 200px;
   border-radius: 5px;
@@ -316,7 +316,7 @@ button {
   z-index: 1;
 }
 
-.warning__title {
+.warning__title, .overload__title {
   width: 100%;
   text-align: center;
   color: #ffffff;
@@ -326,33 +326,33 @@ button {
   margin-bottom: 20px;
 }
 
-.warning__cancel {
+.warning__cancel, .overload__cancel {
   background-color: #61805a;
   padding: 5px 10px;
   border-radius: 5px;
 }
 
-.warning__cancel:hover {
+.warning__cancel:hover, .overload__cancel:hover {
   background-color: #507c47;
   cursor: pointer;
 }
 
-.warning__cancel:active {
+.warning__cancel:active, .overload__cancel:active {
   background-color: #51aa3f;
 }
 
-.warning__confirm {
+.warning__confirm, .overload__confirm {
   background-color: #61805a;
   padding: 5px 10px;
   border-radius: 5px;
 }
 
-.warning__confirm:hover {
+.warning__confirm:hover, .overload__confirm:hover {
   background-color: #507c47;
   cursor: pointer;
 }
 
-.warning__confirm:active {
+.warning__confirm:active, .overload__confirm:active {
   background-color: #51aa3f;
 }
 

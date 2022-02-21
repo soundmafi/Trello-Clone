@@ -248,7 +248,7 @@ button{
     }
 }
 
-.warning {
+.warning, .overload {
     background-color: #8ac47b;
     width: 200px;
     border-radius: 5px;
@@ -375,3 +375,42 @@ button{
     border-radius: 5px;
     cursor: pointer;
 }
+
+
+// .overload {
+//     background-color: #8ac47b;
+//     width: 200px;
+//     border-radius: 5px;
+//     padding: 15px 10px;
+//     display: flex;
+//     justify-content: space-around;
+//     flex-wrap: wrap;
+//     border: 1px solid #ffffff;
+//     box-shadow: -5px 40px 40px -29px #000000;
+//     display: none;
+//     position: absolute;
+//     top: 50vh;
+//     left: 50vw;
+//     z-index: 1;
+//     &__title {
+//         width: 100%;
+//         text-align: center;
+//         color: #ffffff;
+//         font-size: 18px;
+//         font-weight: 800;
+//         text-transform: uppercase;
+//         margin-bottom: 20px;
+//     }
+//     &__confirm {
+//         background-color: #61805a;
+//         padding: 5px 10px;
+//         border-radius: 5px;
+//         &:hover{
+//             background-color: #507c47;
+//             cursor: pointer;
+//         }
+//         &:active{
+//             background-color: #51aa3f;
+//         }
+//     }
+// }

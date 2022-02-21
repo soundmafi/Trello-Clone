@@ -6,8 +6,11 @@ let listDone = document.querySelector('.done').querySelector('.task__list');    
 let counterTodo = document.querySelector('.todo').querySelector('.topic__count');       // Точка для счётчика тасков в Todo
 let counterProgress = document.querySelector('.progress').querySelector('.topic__count');// Точка для счётчика тасков в Progress
 let counterDone = document.querySelector('.done').querySelector('.topic__count');       // Точка для счётчика тасков в Done
-let warning = document.querySelector('.warning');                                       // Попап предупреждения Warning
+let warning = document.querySelector('.warning');
+let overTask = document.querySelector('.overload');                                       // Попап предупреждения Warning
 let edit = document.querySelector('.container');
+
+let countProgress = 0;
 
 let taskBase = [];                              //Хранилище хранилище тасков
 let userBase = [];                              //Хранилище пользователей
@@ -18,7 +21,6 @@ function loaderStart(){
     getUsersStorage();
     renderList(taskBase);                       //Отрисовываем первоначальный списковтасков
     counterTasks(taskBase);                     //Считаем количество тасков в каждой колонке                               //Получаем список пользователей из LocalStorage
-    // renderTaskForm();                           //Отрисовываем форму для новых тасков
 }
 
 loaderStart();
@@ -54,6 +56,14 @@ warning.addEventListener('click', event =>{
     }
 });
 
+//функция вызова моадльного окна при привышении лимита
+overTask.addEventListener('click', event =>{
+    let eventTouch = event.target.className;
+    if (eventTouch === 'overload__confirm'){                      // По клику на кнопку Confirm:
+        overTask.classList.toggle('visible');                     //     - Скрываем попап warning
+    }
+});
+
 // taskRender отрисовывает элемент, сразу навешивает listener'ы на кнопки, вписывает все данные.
 function taskRender(el,i){
     let groundElement = elementBuilder('div','task');
@@ -82,7 +92,6 @@ function taskRender(el,i){
     groundElement.addEventListener('click', event =>{
         let eventTouch = event.target.className;
         if (eventTouch === 'button__edit'){
-            console.log('редактировать таск');
             let editedElement = taskBase[event.target.parentNode.id - 1];
             editTask(editedElement);
         }
@@ -91,8 +100,13 @@ function taskRender(el,i){
            rebuild();
         }
         if (eventTouch === 'task__start'){
+            if (countProgress < 6){
             taskBase[event.target.parentNode.id-1].category = 'progress';
             rebuild();
+            }else{
+                console.log('очень много, епт');
+                overTask.classList.toggle('visible'); 
+            }
         }
         if (eventTouch === 'button__back'){
             taskBase[event.target.parentNode.id-1].category = 'todo';
@@ -149,9 +163,8 @@ function renderList(allTasks){
             taskForm.classList.toggle('visible');
         }
     });
-
     let taskForm = document.querySelector('.taskForm');
-    return taskForm, console.log(taskForm);
+    return taskForm;
 }
 
 // storeTask Фукнция сбора информации и записи его в хранилище
@@ -203,8 +216,8 @@ function clearLists(){
 // функция подсчёта тасков в каждой колонке
 function counterTasks(taskBase){
     let countTodo = 0;
-    let countProgress = 0;
-    let countDone = 0
+    countProgress = 0;
+    let countDone = 0;
     taskBase.forEach(el =>{
         if (el.category === 'todo'){
             countTodo++;
@@ -217,6 +230,7 @@ function counterTasks(taskBase){
     counterTodo.innerHTML = countTodo;
     counterProgress.innerHTML = countProgress;
     counterDone.innerHTML = countDone;
+    return countProgress;
 }
 
 // получение пользователей с сервера
