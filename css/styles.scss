@@ -417,367 +417,10 @@ button{
 
 
 
-
-@media (max-width: 850px) {
-    .trello {
-        background-color: #cfd8ff;
-        padding-top: 20px;
-    
-        &__header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        background-color: #a2b3fd;
-        border-radius: 10px;
-        padding: 25px 100px 25px 50px;
-        margin-bottom: 20px;
-        }
-    
-        &__title {
-            color: #ffffff;
-            text-transform: uppercase;
-            font-size: 48px;
-            font-weight: 800; 
-        }
-    
-        &__timer {
-            border: 1px solid #6884ff;
-            border-radius: 5px;
-            padding: 5px 20px;
-            color: #ffffff;
-            text-transform: uppercase;
-            font-size: 36px;
-            font-weight: 600;
-            display: flex;
-        }
-    }
-    
-    .desc {
-        background-color: #a2b3fd;
-        border-radius: 10px;
-        padding: 15px 30px; 
-        display: flex;
-        justify-content: space-between;
-        align-items:stretch;
-        
-        &__category {
-            border-radius: 8px;
-            width: calc((100% - 5px)/3); 
-            padding: 5px 5px;
-        }
-    }
-    
-    .todo .topic{
-        background-color: #ffbf0f;
-    }
-    .todo .task {
-        background-color: #ffbf0f;
-    }
-    
-    .progress .topic{
-        background-color: #366cff67;
-    }
-    .progress .task {
-        background-color: #366cff67;
-    }
-    
-    .done .topic{
-        background-color: #8ac47b;
-    }
-    .done .task{
-        background-color: #8ac47b;
-    }
-    
-    .topic {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 5px 30px;
-        background-color: #5b79ffe7;
-        border-radius: 5px;
-        margin-bottom: 10px;
-        box-shadow:  0px 3px 7px -3px #000000 ;
-        &__title {
-        color: #ffffff;
-        text-transform: uppercase;
-        }
-        &__count {
-        color: #ffffff;
-        text-transform: uppercase;
-        }
-    }
-    
-    .task {
-        position: relative;
-        border-radius: 8px;
-        margin-bottom: 8px;
-        padding: 5px 5px 10px 10px;
-        box-shadow:  0px 3px 7px -3px #000000 ;
-    
-        &__list {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 20px;
-        }
-        
-        &__title {
-            color: #ffffff;
-            text-transform: uppercase;
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-    
-        &__description {
-            display: none;
-            width: 85%;
-            color: #ffffff;
-            font-size: 14px;
-            font-weight: 400;
-            margin-bottom: 15px;
-        }
-    
-        &__user {
-            color: #ffffff;
-            font-size: 12px;
-            font-weight: 400;
-        }
-    
-        &__start {
-            position: absolute;
-            right: 5px;
-            top: 45%;
-            cursor: pointer;
-        }
-        
-        &__data{
-            position: absolute;
-            right: 5px;
-            bottom: 5px;
-            color: #ffffff;
-            font-size: 12px;
-            font-weight: 400;
-        }
-    }
-    
-    .button__edit {
-        position: absolute;
-        top: 2px;
-        right: 5px;
-        padding: 1px 5px;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    
-    .button__delete {
-        position: absolute;
-        top: 2px;
-        right: 40px;
-        padding: 1px 5px;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    
-    .button__add {
-        color: #000000;
-        font-size: 14px;
-        font-weight: 600;
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        padding: 10px 0;
-        border-radius: 5px;
-        margin-top: auto;
-        text-transform: uppercase;
-        box-shadow:  0px 3px 7px -3px #000000 ;
-        &:hover{
-            background-color: #ffdd81;
-            cursor: pointer;
-        }
-    
-        &:active{
-            background-color: #ff970f;
-        }
-    }
-    
-    .button__back {
-        position: absolute;
-        top: 2px;
-        right: 74px;
-        padding: 1px 4px;
-        border-radius: 5px;
-        &:hover{
-            cursor: pointer;
-        }
-    }
-    
-    .button__complete {
-        position: absolute;
-        top: 2px;
-        right: 5px;
-        padding: 1px 4px;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    
-    .button__deleteAll {
-        color: #000000;
-        font-size: 14px;
-        font-weight: 600;
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        padding: 10px 0;
-        border-radius: 5px;
-        margin-top: auto;
-        text-transform: uppercase;
-        box-shadow:  0px 3px 7px -3px #000000 ;
-        &:hover{
-            background-color: #ffdd81;
-            cursor: pointer;
-        }
-        &:active{
-            background-color: #ff970f;
-        }
-    }
-    
-    .warning, .overload {
-        background-color: #8ac47b;
-        width: 200px;
-        border-radius: 5px;
-        padding: 15px 10px;
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        border: 1px solid #ffffff;
-        box-shadow: -5px 40px 40px -29px #000000;
-        display: none;
-        position: absolute;
-        top: 50vh;
-        left: 50vw;
-        z-index: 1;
-        &__title {
-            width: 100%;
-            text-align: center;
-            color: #ffffff;
-            font-size: 18px;
-            font-weight: 800;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-        &__cancel{
-            background-color: #61805a;
-            padding: 5px 10px;
-            border-radius: 5px;
-            &:hover{
-                background-color: #507c47;
-                cursor: pointer;
-            }
-            &:active{
-                background-color: #51aa3f;
-            }
-        }
-    
-        &__confirm {
-            background-color: #61805a;
-            padding: 5px 10px;
-            border-radius: 5px;
-            &:hover{
-                background-color: #507c47;
-                cursor: pointer;
-            }
-            &:active{
-                background-color: #51aa3f;
-            }
-        }
-    }
-    
-    .taskForm, .taskEdit {
-        position: absolute;
-        flex-direction: column;
-        background-color: #8ac47b;
-        width: 400px;
-        border-radius: 10px;
-        padding: 15px 10px;
-        border: 1px solid #ffffff;
-        box-shadow: -5px 40px 40px -29px #000000;
-        display: none;
-        top: 20vh;
-        left: 50vw;
-        transform: translateX(-50%);
-        z-index: 1;
-    }
-    
-    .visible {
-        display: flex;
-    }
-    
-    .inputTitle{
-        font-size: 14px;
-        text-transform: uppercase;
-        margin-bottom: 3px;
-        color: #ffffff;
-        font-weight: 600;
-    }
-    
-    .inputDescription{
-        font-size: 14px;
-        text-transform: uppercase;
-        margin-bottom: 3px;
-        color: #ffffff;
-        font-weight: 600;
-    }
-    
-    .taskForm{
-        &__title {
-        border: none;
-        padding: 5px 5px;
-        border-radius: 5px;
-        font-size: 14px;
-        margin-bottom: 15px;
-    }
-    
-        &__description{
-        display: block;
-        border: none;
-        padding: 5px 5px;
-        border-radius: 5px;
-        font-size: 14px;
-        margin-bottom: 3px;
-        height: 100px;
-        margin-bottom: 10px;
-    }
-    
-        &__users {
-        width: 100px;
-    }
-    
-        &__cancel {
-        position: absolute;
-        bottom: 5px;
-        right: 5px;
-        padding: 1px 4px;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    
-        &__confirm {
-        position: absolute;
-        bottom: 5px;
-        right: 58px;
-        padding: 1px 4px;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    }
-}
-
-@media (max-width: 320px){
+@media (max-width: 500px){
     .container {
         margin: 0 auto;
-        max-width: 320px;
+        max-width: 500px;
         width: 100%;
     }
     
@@ -819,7 +462,7 @@ button{
         background-color: #a2b3fd;
         flex-direction: column;
         border-radius: 10px;
-        padding: 15px 15px; 
+        padding: 100px 15px 15px; 
         display: flex;
         justify-content: space-between;
         align-items:stretch;
@@ -832,6 +475,9 @@ button{
     }
     
     .todo .topic{
+        position: absolute;
+        top: 170px;
+        width: 30%;
         background-color: #ffbf0f;
     }
     .todo .task {
@@ -839,13 +485,22 @@ button{
     }
     
     .progress .topic{
+        position: absolute;
+        top: 170px;
+        right: 36%;
+        width: 29%;
         background-color: #366cff67;
     }
     .progress .task {
+        
         background-color: #366cff67;
     }
     
     .done .topic{
+        position: absolute;
+        top: 170px;
+        right: 5%;
+        width: 30%;
         background-color: #8ac47b;
     }
     .done .task{
@@ -855,7 +510,7 @@ button{
     .topic {
         width: 100%;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
         padding: 5px 30px;
         background-color: #5b79ffe7;
@@ -882,7 +537,7 @@ button{
         &__list {
             display: flex;
             flex-direction: column;
-            margin-bottom: 20px;
+            margin-bottom: 0px;
         }
         
         &__title {
@@ -909,8 +564,8 @@ button{
     
         &__start {
             background: none;
-            width: 18px;
-            height: 18px;
+            width: 14px;
+            height: 14px;
             position: absolute;
             right: 5px;
             top: 45%;
@@ -933,11 +588,11 @@ button{
     
     .button{
         &__edit {
-        width: 18px;
-        height: 18px;
+        width: 16px;
+        height: 16px;
         position: absolute;
         top: 4px;
-        right: 40px;
+        right: 30px;
         padding: 1px 5px;
         border-radius: 5px;
         cursor: pointer;
@@ -948,8 +603,8 @@ button{
     }
     
         &__delete {
-        width: 17px;
-        height: 17px;
+        width: 15px;
+        height: 16px;
         position: absolute;
         top: 4px;
         right: 5px;
@@ -963,12 +618,14 @@ button{
     }
     
         &__add {
+            position: absolute;
+            top: 125px;
         color: #000000;
         font-size: 14px;
         font-weight: 600;
         display: flex;
         justify-content: center;
-        width: 100%;
+        width: 41%;
         padding: 10px 0;
         border-radius: 5px;
         margin-top: auto;
@@ -1016,12 +673,15 @@ button{
     }
     
         &__deleteAll {
+            position: absolute;
+            top: 125px;
+            right: 5%;
         color: #000000;
         font-size: 14px;
         font-weight: 600;
         display: flex;
         justify-content: center;
-        width: 100%;
+        width: 41%;
         padding: 10px 0;
         border-radius: 5px;
         margin-top: auto;
@@ -1093,9 +753,9 @@ button{
         position: absolute;
         flex-direction: column;
         background-color: #8ac47b;
-        width: 400px;
+        width: 95%;
         border-radius: 10px;
-        padding: 15px 10px;
+        padding: 5px 10px;
         border: 1px solid #ffffff;
         box-shadow: -5px 40px 40px -29px #000000;
         display: none;
@@ -1166,5 +826,8 @@ button{
         border-radius: 5px;
         cursor: pointer;
     }
+    }
+    .topic__title{
+        display: none;
     }
 }

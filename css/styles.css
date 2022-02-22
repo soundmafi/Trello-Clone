@@ -470,379 +470,10 @@ button {
   cursor: pointer;
 }
 
-@media (max-width: 850px) {
-  .trello {
-    background-color: #cfd8ff;
-    padding-top: 20px;
-  }
-  .trello__header {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    width: 100%;
-    background-color: #a2b3fd;
-    border-radius: 10px;
-    padding: 25px 100px 25px 50px;
-    margin-bottom: 20px;
-  }
-  .trello__title {
-    color: #ffffff;
-    text-transform: uppercase;
-    font-size: 48px;
-    font-weight: 800;
-  }
-  .trello__timer {
-    border: 1px solid #6884ff;
-    border-radius: 5px;
-    padding: 5px 20px;
-    color: #ffffff;
-    text-transform: uppercase;
-    font-size: 36px;
-    font-weight: 600;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-  }
-  .desc {
-    background-color: #a2b3fd;
-    border-radius: 10px;
-    padding: 15px 30px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-box-align: stretch;
-        -ms-flex-align: stretch;
-            align-items: stretch;
-  }
-  .desc__category {
-    border-radius: 8px;
-    width: calc((100% - 5px)/3);
-    padding: 5px 5px;
-  }
-  .todo .topic {
-    background-color: #ffbf0f;
-  }
-  .todo .task {
-    background-color: #ffbf0f;
-  }
-  .progress .topic {
-    background-color: #366cff67;
-  }
-  .progress .task {
-    background-color: #366cff67;
-  }
-  .done .topic {
-    background-color: #8ac47b;
-  }
-  .done .task {
-    background-color: #8ac47b;
-  }
-  .topic {
-    width: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    padding: 5px 30px;
-    background-color: #5b79ffe7;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    -webkit-box-shadow: 0px 3px 7px -3px #000000;
-            box-shadow: 0px 3px 7px -3px #000000;
-  }
-  .topic__title {
-    color: #ffffff;
-    text-transform: uppercase;
-  }
-  .topic__count {
-    color: #ffffff;
-    text-transform: uppercase;
-  }
-  .task {
-    position: relative;
-    border-radius: 8px;
-    margin-bottom: 8px;
-    padding: 5px 5px 10px 10px;
-    -webkit-box-shadow: 0px 3px 7px -3px #000000;
-            box-shadow: 0px 3px 7px -3px #000000;
-  }
-  .task__list {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    margin-bottom: 20px;
-  }
-  .task__title {
-    color: #ffffff;
-    text-transform: uppercase;
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 15px;
-  }
-  .task__description {
-    display: none;
-    width: 85%;
-    color: #ffffff;
-    font-size: 14px;
-    font-weight: 400;
-    margin-bottom: 15px;
-  }
-  .task__user {
-    color: #ffffff;
-    font-size: 12px;
-    font-weight: 400;
-  }
-  .task__start {
-    position: absolute;
-    right: 5px;
-    top: 45%;
-    cursor: pointer;
-  }
-  .task__data {
-    position: absolute;
-    right: 5px;
-    bottom: 5px;
-    color: #ffffff;
-    font-size: 12px;
-    font-weight: 400;
-  }
-  .button__edit {
-    position: absolute;
-    top: 2px;
-    right: 5px;
-    padding: 1px 5px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  .button__delete {
-    position: absolute;
-    top: 2px;
-    right: 40px;
-    padding: 1px 5px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  .button__add {
-    color: #000000;
-    font-size: 14px;
-    font-weight: 600;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    width: 100%;
-    padding: 10px 0;
-    border-radius: 5px;
-    margin-top: auto;
-    text-transform: uppercase;
-    -webkit-box-shadow: 0px 3px 7px -3px #000000;
-            box-shadow: 0px 3px 7px -3px #000000;
-  }
-  .button__add:hover {
-    background-color: #ffdd81;
-    cursor: pointer;
-  }
-  .button__add:active {
-    background-color: #ff970f;
-  }
-  .button__back {
-    position: absolute;
-    top: 2px;
-    right: 74px;
-    padding: 1px 4px;
-    border-radius: 5px;
-  }
-  .button__back:hover {
-    cursor: pointer;
-  }
-  .button__complete {
-    position: absolute;
-    top: 2px;
-    right: 5px;
-    padding: 1px 4px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  .button__deleteAll {
-    color: #000000;
-    font-size: 14px;
-    font-weight: 600;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    width: 100%;
-    padding: 10px 0;
-    border-radius: 5px;
-    margin-top: auto;
-    text-transform: uppercase;
-    -webkit-box-shadow: 0px 3px 7px -3px #000000;
-            box-shadow: 0px 3px 7px -3px #000000;
-  }
-  .button__deleteAll:hover {
-    background-color: #ffdd81;
-    cursor: pointer;
-  }
-  .button__deleteAll:active {
-    background-color: #ff970f;
-  }
-  .warning, .overload {
-    background-color: #8ac47b;
-    width: 200px;
-    border-radius: 5px;
-    padding: 15px 10px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    border: 1px solid #ffffff;
-    -webkit-box-shadow: -5px 40px 40px -29px #000000;
-            box-shadow: -5px 40px 40px -29px #000000;
-    display: none;
-    position: absolute;
-    top: 50vh;
-    left: 50vw;
-    z-index: 1;
-  }
-  .warning__title, .overload__title {
-    width: 100%;
-    text-align: center;
-    color: #ffffff;
-    font-size: 18px;
-    font-weight: 800;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-  }
-  .warning__cancel, .overload__cancel {
-    background-color: #61805a;
-    padding: 5px 10px;
-    border-radius: 5px;
-  }
-  .warning__cancel:hover, .overload__cancel:hover {
-    background-color: #507c47;
-    cursor: pointer;
-  }
-  .warning__cancel:active, .overload__cancel:active {
-    background-color: #51aa3f;
-  }
-  .warning__confirm, .overload__confirm {
-    background-color: #61805a;
-    padding: 5px 10px;
-    border-radius: 5px;
-  }
-  .warning__confirm:hover, .overload__confirm:hover {
-    background-color: #507c47;
-    cursor: pointer;
-  }
-  .warning__confirm:active, .overload__confirm:active {
-    background-color: #51aa3f;
-  }
-  .taskForm, .taskEdit {
-    position: absolute;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    background-color: #8ac47b;
-    width: 400px;
-    border-radius: 10px;
-    padding: 15px 10px;
-    border: 1px solid #ffffff;
-    -webkit-box-shadow: -5px 40px 40px -29px #000000;
-            box-shadow: -5px 40px 40px -29px #000000;
-    display: none;
-    top: 20vh;
-    left: 50vw;
-    -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
-    z-index: 1;
-  }
-  .visible {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-  }
-  .inputTitle {
-    font-size: 14px;
-    text-transform: uppercase;
-    margin-bottom: 3px;
-    color: #ffffff;
-    font-weight: 600;
-  }
-  .inputDescription {
-    font-size: 14px;
-    text-transform: uppercase;
-    margin-bottom: 3px;
-    color: #ffffff;
-    font-weight: 600;
-  }
-  .taskForm__title {
-    border: none;
-    padding: 5px 5px;
-    border-radius: 5px;
-    font-size: 14px;
-    margin-bottom: 15px;
-  }
-  .taskForm__description {
-    display: block;
-    border: none;
-    padding: 5px 5px;
-    border-radius: 5px;
-    font-size: 14px;
-    margin-bottom: 3px;
-    height: 100px;
-    margin-bottom: 10px;
-  }
-  .taskForm__users {
-    width: 100px;
-  }
-  .taskForm__cancel {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-    padding: 1px 4px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  .taskForm__confirm {
-    position: absolute;
-    bottom: 5px;
-    right: 58px;
-    padding: 1px 4px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-}
-
-@media (max-width: 320px) {
+@media (max-width: 500px) {
   .container {
     margin: 0 auto;
-    max-width: 320px;
+    max-width: 500px;
     width: 100%;
   }
   .trello {
@@ -890,7 +521,7 @@ button {
         -ms-flex-direction: column;
             flex-direction: column;
     border-radius: 10px;
-    padding: 15px 15px;
+    padding: 100px 15px 15px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -907,18 +538,29 @@ button {
     padding: 5px 0px;
   }
   .todo .topic {
+    position: absolute;
+    top: 170px;
+    width: 30%;
     background-color: #ffbf0f;
   }
   .todo .task {
     background-color: #ffbf0f;
   }
   .progress .topic {
+    position: absolute;
+    top: 170px;
+    right: 36%;
+    width: 29%;
     background-color: #366cff67;
   }
   .progress .task {
     background-color: #366cff67;
   }
   .done .topic {
+    position: absolute;
+    top: 170px;
+    right: 5%;
+    width: 30%;
     background-color: #8ac47b;
   }
   .done .task {
@@ -929,9 +571,8 @@ button {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -966,7 +607,7 @@ button {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
   }
   .task__title {
     color: #ffffff;
@@ -989,8 +630,8 @@ button {
   }
   .task__start {
     background: none;
-    width: 18px;
-    height: 18px;
+    width: 14px;
+    height: 14px;
     position: absolute;
     right: 5px;
     top: 45%;
@@ -1008,11 +649,11 @@ button {
     font-weight: 400;
   }
   .button__edit {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     position: absolute;
     top: 4px;
-    right: 40px;
+    right: 30px;
     padding: 1px 5px;
     border-radius: 5px;
     cursor: pointer;
@@ -1022,8 +663,8 @@ button {
     background-position: center;
   }
   .button__delete {
-    width: 17px;
-    height: 17px;
+    width: 15px;
+    height: 16px;
     position: absolute;
     top: 4px;
     right: 5px;
@@ -1036,6 +677,8 @@ button {
     background-position: center;
   }
   .button__add {
+    position: absolute;
+    top: 125px;
     color: #000000;
     font-size: 14px;
     font-weight: 600;
@@ -1045,7 +688,7 @@ button {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    width: 100%;
+    width: 41%;
     padding: 10px 0;
     border-radius: 5px;
     margin-top: auto;
@@ -1091,6 +734,9 @@ button {
     background-position: center;
   }
   .button__deleteAll {
+    position: absolute;
+    top: 125px;
+    right: 5%;
     color: #000000;
     font-size: 14px;
     font-weight: 600;
@@ -1100,7 +746,7 @@ button {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    width: 100%;
+    width: 41%;
     padding: 10px 0;
     border-radius: 5px;
     margin-top: auto;
@@ -1176,9 +822,9 @@ button {
         -ms-flex-direction: column;
             flex-direction: column;
     background-color: #8ac47b;
-    width: 400px;
+    width: 95%;
     border-radius: 10px;
-    padding: 15px 10px;
+    padding: 5px 10px;
     border: 1px solid #ffffff;
     -webkit-box-shadow: -5px 40px 40px -29px #000000;
             box-shadow: -5px 40px 40px -29px #000000;
@@ -1243,6 +889,9 @@ button {
     padding: 1px 4px;
     border-radius: 5px;
     cursor: pointer;
+  }
+  .topic__title {
+    display: none;
   }
 }
 /*# sourceMappingURL=styles.css.map */
