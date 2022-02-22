@@ -5,3 +5,9 @@ export function elementBuilder(el,clName,textInfo){
     element.textContent = textInfo;
     return element;
 }
+
+export function buttonBuilder(el,clName){
+    let element = document.createElement(`${el}`);
+    element.classList.add(`${clName}`);
+    return element;
+}

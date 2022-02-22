@@ -1,4 +1,4 @@
-import {elementBuilder} from './renders.js';
+import {elementBuilder, buttonBuilder} from './renders.js';
 
 let listTodo = document.querySelector('.todo').querySelector('.task__list');            // Список колонки Todo
 let listProgress = document.querySelector('.progress').querySelector('.task__list');    // Список колонки Progress
@@ -77,15 +77,18 @@ function taskRender(el,i){
     groundElement.appendChild(taskUser);
     groundElement.appendChild(taskData);
     // В зависимости от категории добавляем соответсвующие кнопки
-    if (el.category === 'todo'){                                                    
-        groundElement.appendChild(elementBuilder('button','task__start','start'));
-        groundElement.appendChild(elementBuilder('button','button__edit','edit'));
-        groundElement.appendChild(elementBuilder('button','button__delete', 'delete'));
+    if (el.category === 'todo'){
+        // let buttonStart = document.createElement('button');
+        // buttonStart.classList.add('task__start');                                                    
+        groundElement.appendChild(buttonBuilder('button','task__start'));
+        // groundElement.appendChild(buttonStart);
+        groundElement.appendChild(buttonBuilder('button','button__edit'));
+        groundElement.appendChild(buttonBuilder('button','button__delete'));
     } else if( el.category === 'progress'){
-        groundElement.appendChild(elementBuilder('button','button__back','Back'));
-        groundElement.appendChild(elementBuilder('button','button__complete', 'Complete'));
+        groundElement.appendChild(buttonBuilder('button','button__back'));
+        groundElement.appendChild(buttonBuilder('button','button__complete'));
     } else if( el.category === 'done'){
-        groundElement.appendChild(elementBuilder('button','button__delete', 'delete'));
+        groundElement.appendChild(buttonBuilder('button','button__delete'));
     }
     
     // Добавляем прослушку на кнопки
