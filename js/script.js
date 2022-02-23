@@ -140,6 +140,7 @@ function renderList(allTasks){
     taskElement.appendChild(elementBuilder('label','inputTitle','Title'));
     let inputTitle = elementBuilder('input','taskForm__title');
     inputTitle.id = 'inputTitle';
+    inputTitle.setAttribute('autocomplete','off');
     inputTitle.placeholder ='название';
     taskElement.appendChild(inputTitle);
     taskElement.appendChild(elementBuilder('label','inputDescription','Description'));
@@ -323,15 +324,14 @@ function editTask(element){
 
 function mobileTabs() {
   if (window.innerWidth < 500) {
-      
+
     let allTopics = document.querySelectorAll('.topic');
     listTodo.classList.add('invisible');
     listProgress.classList.add('invisible');
-    // listDone.classList.add('invisible')
+
     allTopics.forEach(el=>{
         el.addEventListener('click', e =>{
             let numberClass = e.target.parentNode.parentNode.classList[1];
-            console.log(numberClass);
             let elClass = e.target.parentNode.classList[1];
             if ((elClass === 'todo') || (numberClass === 'todo')){ 
                     listTodo.classList.toggle('invisible');

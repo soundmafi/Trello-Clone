@@ -161,7 +161,6 @@ button{
         background-image: url(../img/button__start.svg);
         background-repeat: no-repeat;
         background-position: center;
-        
     }
     
     &__data{
@@ -188,7 +187,7 @@ button{
     background-image: url(../img/button__edit.svg);
     background-repeat: no-repeat;
     background-position: center;
-}
+    }   
 
     &__delete {
     width: 17px;
@@ -203,7 +202,7 @@ button{
     background-image: url(../img/button__delete.svg);
     background-repeat: no-repeat;
     background-position: center;
-}
+    }
 
     &__add {
     color: #000000;
@@ -256,7 +255,7 @@ button{
     background-image: url(../img/button__conplete.svg);
     background-repeat: no-repeat;
     background-position: center;
-}
+    }
 
     &__deleteAll {
     color: #000000;
