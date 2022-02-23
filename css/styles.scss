@@ -396,19 +396,25 @@ button{
     &__cancel {
     position: absolute;
     bottom: 5px;
-    right: 5px;
-    padding: 1px 4px;
+    right: 10px;
+    padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
+    &:hover{
+        background-color: #b3b3b3;
+    }
 }
 
     &__confirm {
     position: absolute;
     bottom: 5px;
-    right: 58px;
-    padding: 1px 4px;
+    right: 80px;
+    padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
+    &:hover{
+        background-color: #b3b3b3;
+    }
 }
 }
 

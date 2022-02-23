@@ -455,19 +455,27 @@ button {
 .taskForm__cancel {
   position: absolute;
   bottom: 5px;
-  right: 5px;
-  padding: 1px 4px;
+  right: 10px;
+  padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.taskForm__cancel:hover {
+  background-color: #b3b3b3;
 }
 
 .taskForm__confirm {
   position: absolute;
   bottom: 5px;
-  right: 58px;
-  padding: 1px 4px;
+  right: 80px;
+  padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.taskForm__confirm:hover {
+  background-color: #b3b3b3;
 }
 
 @media (max-width: 500px) {
