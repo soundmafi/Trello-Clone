@@ -51,7 +51,7 @@ warning.addEventListener('click', event =>{
         warning.classList.toggle('visible');                     // По клику на кнопку Cancel скрываем попап Warning                         
     }
     if (eventTouch === 'warning__confirm'){                      // По клику на кнопку Confirm:
-        taskBase = [];                                           //     - очищаем список тасков в хранилище
+        taskBase = taskBase.filter(el => el.category !== 'done');                                           //     - очищаем список тасков в хранилище
         rebuild();
         warning.classList.toggle('visible');                     //     - Скрываем попап warning
     }
