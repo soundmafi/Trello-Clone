@@ -191,7 +191,7 @@ button {
   right: 5px;
   top: 45%;
   cursor: pointer;
-  background-image: url(/img/button__start.svg);
+  background-image: url(../img/button__start.svg);
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -215,7 +215,7 @@ button {
   border-radius: 5px;
   cursor: pointer;
   background: none;
-  background-image: url(/img/button__edit.svg);
+  background-image: url(../img/button__edit.svg);
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -230,7 +230,7 @@ button {
   border-radius: 5px;
   cursor: pointer;
   background: none;
-  background-image: url(/img/button__delete.svg);
+  background-image: url(../img/button__delete.svg);
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -272,7 +272,7 @@ button {
   padding: 1px 4px;
   border-radius: 5px;
   background: none;
-  background-image: url(/img/button__back.svg);
+  background-image: url(../img/button__back.svg);
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -291,7 +291,7 @@ button {
   border-radius: 5px;
   cursor: pointer;
   background: none;
-  background-image: url(/img/button__conplete.svg);
+  background-image: url(../img/button__conplete.svg);
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -644,7 +644,7 @@ button {
     right: 5px;
     top: 45%;
     cursor: pointer;
-    background-image: url(/img/button__start.svg);
+    background-image: url(../img/button__start.svg);
     background-repeat: no-repeat;
     background-position: center;
   }
@@ -666,7 +666,7 @@ button {
     border-radius: 5px;
     cursor: pointer;
     background: none;
-    background-image: url(/img/button__edit.svg);
+    background-image: url(../img/button__edit.svg);
     background-repeat: no-repeat;
     background-position: center;
   }
@@ -680,7 +680,7 @@ button {
     border-radius: 5px;
     cursor: pointer;
     background: none;
-    background-image: url(/img/button__delete.svg);
+    background-image: url(../img/button__delete.svg);
     background-repeat: no-repeat;
     background-position: center;
   }
@@ -720,7 +720,7 @@ button {
     padding: 1px 4px;
     border-radius: 5px;
     background: none;
-    background-image: url(/img/button__back.svg);
+    background-image: url(../img/button__back.svg);
     background-repeat: no-repeat;
     background-position: center;
   }
@@ -737,7 +737,7 @@ button {
     border-radius: 5px;
     cursor: pointer;
     background: none;
-    background-image: url(/img/button__conplete.svg);
+    background-image: url(../img/button__conplete.svg);
     background-repeat: no-repeat;
     background-position: center;
   }
