@@ -352,6 +352,7 @@ button{
     display: flex;
 }
 
+
 .inputTitle{
     font-size: 14px;
     text-transform: uppercase;
@@ -767,6 +768,10 @@ button{
     
     .visible {
         display: flex;
+    }
+
+    .invisible{
+        display: none;
     }
     
     .inputTitle{

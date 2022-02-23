@@ -17,6 +17,7 @@ let userBase = [];                              //Хранилище польз�
 
 // Функция для получения данных и отрисовки элементов приложения при открытии приложения в браузере
 function loaderStart(){
+    mobileTabs();
     getTasks();                                 //Получаем список тасков для первой отрисовки из LocalStorage
     getUsersStorage();
     renderList(taskBase);                       //Отрисовываем первоначальный списковтасков
@@ -77,11 +78,8 @@ function taskRender(el,i){
     groundElement.appendChild(taskUser);
     groundElement.appendChild(taskData);
     // В зависимости от категории добавляем соответсвующие кнопки
-    if (el.category === 'todo'){
-        // let buttonStart = document.createElement('button');
-        // buttonStart.classList.add('task__start');                                                    
+    if (el.category === 'todo'){                                                
         groundElement.appendChild(buttonBuilder('button','task__start'));
-        // groundElement.appendChild(buttonStart);
         groundElement.appendChild(buttonBuilder('button','button__edit'));
         groundElement.appendChild(buttonBuilder('button','button__delete'));
     } else if( el.category === 'progress'){
@@ -322,3 +320,46 @@ function editTask(element){
     });
     return;
 }
+
+function mobileTabs() {
+  if (window.innerWidth < 500) {
+      
+    let allTopics = document.querySelectorAll('.topic');
+    listTodo.classList.add('invisible');
+    listProgress.classList.add('invisible');
+    // listDone.classList.add('invisible')
+    allTopics.forEach(el=>{
+        el.addEventListener('click', e =>{
+            let numberClass = e.target.parentNode.parentNode.classList[1];
+            console.log(numberClass);
+            let elClass = e.target.parentNode.classList[1];
+            if ((elClass === 'todo') || (numberClass === 'todo')){ 
+                    listTodo.classList.toggle('invisible');
+                    if(!listProgress.classList.contains('invisible')){
+                        listProgress.classList.toggle('invisible');                       
+                    }
+                    if(!listDone.classList.contains('invisible')){
+                        listDone.classList.toggle('invisible');
+                    }
+            }else if ((elClass === 'progress') || (numberClass === 'progress')){
+                    listProgress.classList.toggle('invisible');
+                    if(!listTodo.classList.contains('invisible')){
+                        listTodo.classList.toggle('invisible');                       
+                    }
+                    if(!listDone.classList.contains('invisible')){
+                        listDone.classList.toggle('invisible');
+                    }
+                
+            }else if((elClass === 'done') || (numberClass === 'done')){
+                    listDone.classList.toggle('invisible');
+                    if(!listTodo.classList.contains('invisible')){
+                        listTodo.classList.toggle('invisible');                       
+                    }
+                    if(!listProgress.classList.contains('invisible')){
+                        listProgress.classList.toggle('invisible');
+                    }
+            }
+        });
+    })
+  }
+};
