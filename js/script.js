@@ -407,8 +407,6 @@ function userInfoRenderList(users){
     tempUsers.sort(function(a,b){
           return  b.counter - a.counter;
     });
-    
-    console.log(tempUsers);
 
     tempUsers.forEach(el =>{
         let userElement = buttonBuilder('div','users__block');
@@ -418,4 +416,11 @@ function userInfoRenderList(users){
     });
 }
 
-        
+listUsers.addEventListener('click', event =>{
+    let selectedUser = event.target.innerText;
+    taskBase.forEach(el =>{
+        if (el.user === selectedUser){
+            listUsers.appendChild(elementBuilder('p','users__tasks',`${el.title}`));
+        }
+    });
+})
