@@ -9,20 +9,13 @@ let counterDone = document.querySelector('.done').querySelector('.topic__count')
 let warning = document.querySelector('.warning');
 let overTask = document.querySelector('.overload');                                       // Попап предупреждения Warning
 let edit = document.querySelector('.container');
+let listUsers = document.querySelector('.users__list');                                        // Список назначенных пользователей
 
 let countProgress = 0;
 
 let taskBase = [];                              //Хранилище хранилище тасков
 let userBase = [];                              //Хранилище пользователей
-
-// Функция для получения данных и отрисовки элементов приложения при открытии приложения в браузере
-function loaderStart(){
-    mobileTabs();
-    getTasks();                                 //Получаем список тасков для первой отрисовки из LocalStorage
-    getUsersStorage();
-    renderList(taskBase);                       //Отрисовываем первоначальный списковтасков
-    counterTasks(taskBase);                     //Считаем количество тасков в каждой колонке                               //Получаем список пользователей из LocalStorage
-}
+let tempUsers = [];
 
 loaderStart();
 
@@ -56,6 +49,16 @@ warning.addEventListener('click', event =>{
         warning.classList.toggle('visible');                     //     - Скрываем попап warning
     }
 });
+
+// Функция для получения данных и отрисовки элементов приложения при открытии приложения в браузере
+function loaderStart(){
+    mobileTabs();
+    userInfoRenderList(userBase);
+    getTasks();                                 //Получаем список тасков для первой отрисовки из LocalStorage
+    getUsersStorage();
+    renderList(taskBase);                       //Отрисовываем первоначальный списковтасков
+    counterTasks(taskBase);                     //Считаем количество тасков в каждой колонке                               //Получаем список пользователей из LocalStorage
+}
 
 //функция вызова моадльного окна при привышении лимита
 overTask.addEventListener('click', event =>{
@@ -105,7 +108,6 @@ function taskRender(el,i){
             taskBase[event.target.parentNode.id-1].category = 'progress';
             rebuild();
             }else{
-                console.log('очень много, епт');
                 overTask.classList.toggle('visible'); 
             }
         }
@@ -162,6 +164,7 @@ function renderList(allTasks){
         }
         if (eventTouch === 'taskForm__confirm'){                        // по клику на confirm записываем новый таск и удаляем модальное окно 
             storeTask();
+            store
             taskForm.classList.toggle('visible');
         }
     });
@@ -185,8 +188,18 @@ function storeTask(){
         user: user,                                     // назаченный пользователь
         date: textDate                                  // дата
     };
-    taskBase.push(newTask);                             // записываем в хранилище сформарованный новый таск    
-    rebuild();
+
+    let newUser = { 
+        name: user,
+        tasks: []
+    }
+    // if ((newTask.title === '') || (newTask.description === '')){
+    //     console.log('заполнить все поля');
+
+    // }else{
+        taskBase.push(newTask);                             // записываем в хранилище сформарованный новый таск    
+        rebuild();
+    // }
 }
 
 //Отправка тасков в localStorage
@@ -363,3 +376,40 @@ function mobileTabs() {
     })
   }
 };
+
+let buttonSetting = document.querySelector('.button__settings');
+    buttonSetting.addEventListener('click', event =>{
+    let modalUsers = document.querySelector('.users');
+    modalUsers.classList.toggle('visible');
+    userInfoRenderList(userBase);
+});
+
+function userInfoRenderList(users){
+    tempUsers = [];
+    listUsers.innerHTML = '';
+
+    users.forEach(el =>{
+        let counter = 0;
+        let userName = el.name;
+        let userElement = buttonBuilder('div','users__block');
+        userElement.appendChild(elementBuilder('p','users__name',`${el.name}`));
+        taskBase.forEach(el => {
+            if (el.user === userName){
+                counter++;
+            }
+        });
+        userElement.appendChild(elementBuilder('p','users__tasks',`${counter}`));
+        listUsers.appendChild(userElement);
+        let obj = {
+            user: userName,
+            counter: counter
+        }
+        tempUsers.push(obj);
+    });
+
+    tempUsers.sort(function(a,b){
+          return  b.counter - a.counter;
+    });
+    
+    console.log(tempUsers);
+}
