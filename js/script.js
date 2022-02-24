@@ -390,16 +390,13 @@ function userInfoRenderList(users){
 
     users.forEach(el =>{
         let counter = 0;
-        let userName = el.name;
-        let userElement = buttonBuilder('div','users__block');
-        userElement.appendChild(elementBuilder('p','users__name',`${el.name}`));
+        let userName = el.name;        
         taskBase.forEach(el => {
             if (el.user === userName){
                 counter++;
             }
         });
-        userElement.appendChild(elementBuilder('p','users__tasks',`${counter}`));
-        listUsers.appendChild(userElement);
+
         let obj = {
             user: userName,
             counter: counter
@@ -412,4 +409,13 @@ function userInfoRenderList(users){
     });
     
     console.log(tempUsers);
+
+    tempUsers.forEach(el =>{
+        let userElement = buttonBuilder('div','users__block');
+        userElement.appendChild(elementBuilder('p','users__name',`${el.user}`));
+        userElement.appendChild(elementBuilder('p','users__tasks',`${el.counter}`));
+        listUsers.appendChild(userElement);
+    });
 }
+
+        

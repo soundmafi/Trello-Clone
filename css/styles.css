@@ -397,6 +397,9 @@ button {
 
 .users {
   width: 250px;
+  padding: 5px;
+  top: 10px;
+  right: 70px;
 }
 
 .users__list {
@@ -413,6 +416,18 @@ button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-item-align: center;
+      align-self: center;
+  background-color: #456d3d;
+  padding: 3px 5px 3px 4px;
+  margin-bottom: 2px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.users__block:hover {
+  background-color: #8ac47b;
 }
 
 .taskForm, .taskEdit {
