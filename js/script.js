@@ -10,6 +10,7 @@ let warning = document.querySelector('.warning');
 let overTask = document.querySelector('.overload');                                       // Попап предупреждения Warning
 let edit = document.querySelector('.container');
 let listUsers = document.querySelector('.users__list');                                        // Список назначенных пользователей
+let usersTasksDisplay = document.querySelector('.users__taskDisplay');
 
 let countProgress = 0;
 
@@ -148,6 +149,7 @@ function renderList(allTasks){
     taskElement.appendChild(elementBuilder('label','inputDescription','Description'));
     let inputDescription = elementBuilder('input','taskForm__description');
     inputDescription.id = 'inputDescription';
+    inputDescription.setAttribute('autocomplete','off');
     inputDescription.placeholder = "Описание";
     taskElement.appendChild(inputDescription);
     taskElement.appendChild(elementBuilder('button','taskForm__cancel','Cancel'));
@@ -164,7 +166,6 @@ function renderList(allTasks){
         }
         if (eventTouch === 'taskForm__confirm'){                        // по клику на confirm записываем новый таск и удаляем модальное окно 
             storeTask();
-            store
             taskForm.classList.toggle('visible');
         }
     });
@@ -193,13 +194,13 @@ function storeTask(){
         name: user,
         tasks: []
     }
-    // if ((newTask.title === '') || (newTask.description === '')){
-    //     console.log('заполнить все поля');
+    if ((newTask.title === '') || (newTask.description === '')){
+        console.log('заполнить все поля');
 
-    // }else{
+    }else{
         taskBase.push(newTask);                             // записываем в хранилище сформарованный новый таск    
         rebuild();
-    // }
+     }
 }
 
 //Отправка тасков в localStorage
@@ -418,9 +419,12 @@ function userInfoRenderList(users){
 
 listUsers.addEventListener('click', event =>{
     let selectedUser = event.target.innerText;
+    if (selectedUser !== ''){
+    usersTasksDisplay.innerHTML = '';    
     taskBase.forEach(el =>{
         if (el.user === selectedUser){
-            listUsers.appendChild(elementBuilder('p','users__tasks',`${el.title}`));
+            usersTasksDisplay.appendChild(elementBuilder('p','users__taskName',`${el.title}`));
         }
     });
+}
 })

@@ -430,6 +430,21 @@ button {
   background-color: #8ac47b;
 }
 
+.users__taskDisplay {
+  position: absolute;
+  top: 0;
+  left: 102%;
+  background-color: #8ac47b;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+}
+
+.users__taskName {
+  font-size: 14px;
+}
+
 .taskForm, .taskEdit {
   position: absolute;
   -webkit-box-orient: vertical;

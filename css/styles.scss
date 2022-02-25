@@ -339,7 +339,6 @@ button{
 
 }
 .users{
-
     width: 250px;
     padding: 5px;
     top: 10px;
@@ -361,6 +360,19 @@ button{
         &:hover{
             background-color: #8ac47b;
         }
+    }
+    &__taskDisplay{
+        position: absolute;
+        top: 0;
+        left: 102%;
+        background-color: #8ac47b;
+        padding: 5px 10px;
+        border-radius: 5px;
+        color: #ffffff;
+        border: 1px solid #ffffff;
+    }
+    &__taskName{
+        font-size: 14px;      
     }
 }
 
@@ -448,10 +460,6 @@ button{
         background-color: #b3b3b3;
     }
 }
-}
-
-.users{
-    
 }
 
 
